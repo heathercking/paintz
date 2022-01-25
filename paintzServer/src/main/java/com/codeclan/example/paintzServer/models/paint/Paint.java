@@ -3,7 +3,7 @@ package com.codeclan.example.paintzServer.models.paint;
 import com.codeclan.example.paintzServer.models.enums.ColourType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
 
-public class Paint {
+public abstract class Paint {
 
     private Long id;
     private String paintNum;
