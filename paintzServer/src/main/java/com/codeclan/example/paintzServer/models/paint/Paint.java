@@ -1,11 +1,13 @@
 package com.codeclan.example.paintzServer.models.paint;
 
 import com.codeclan.example.paintzServer.models.enums.ColourType;
+import com.codeclan.example.paintzServer.models.enums.ManufacturerType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
 
-public abstract class Paint {
+public class Paint {
 
     private Long id;
+    private ManufacturerType manufacturer;
     private String paintNum;
     private String modelNum;
     private String name;
@@ -15,7 +17,8 @@ public abstract class Paint {
     private String size;
     private double price;
 
-    public Paint(String paintNum, String modelNum, String name, PaintType paintType, ColourType colourCategory, String hexValue, String size, double price) {
+    public Paint(ManufacturerType manufacturer, String paintNum, String modelNum, String name, PaintType paintType, ColourType colourCategory, String hexValue, String size, double price) {
+        this.manufacturer = manufacturer;
         this.paintNum = paintNum;
         this.modelNum = modelNum;
         this.name = name;
@@ -34,6 +37,14 @@ public abstract class Paint {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ManufacturerType getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(ManufacturerType manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getPaintNum() {

@@ -2,7 +2,6 @@ package com.codeclan.example.paintzServer;
 
 import com.codeclan.example.paintzServer.models.enums.ColourType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
-import com.codeclan.example.paintzServer.models.paint.Humbrol;
 
 
 import org.junit.jupiter.api.BeforeEach;
