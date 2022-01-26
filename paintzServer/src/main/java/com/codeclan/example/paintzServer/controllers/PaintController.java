@@ -23,7 +23,8 @@ public class PaintController {
     public ResponseEntity<List<Paint>> getPaints(
             @RequestParam(name="hex", required = false) String hexValue,
             @RequestParam(name="number", required = false) String number,
-            @RequestParam(name="manufacturer", required = false) String manufacturer
+            @RequestParam(name="manufacturer", required = false) String manufacturer,
+            @RequestParam(name="name", required = false) String name
             ) {
         if (hexValue != null) {
             return new ResponseEntity<>(paintRepository.findPaintsByHexValue(hexValue), HttpStatus.OK);
@@ -31,6 +32,8 @@ public class PaintController {
             return new ResponseEntity<>(paintRepository.findPaintsByPaintNum(number), HttpStatus.OK);
         } else if (manufacturer != null) {
             return new ResponseEntity<>(paintRepository.findPaintsByManufacturer(ManufacturerType.valueOf(manufacturer.toUpperCase())), HttpStatus.OK);
+        } else if (name != null) {
+            return new ResponseEntity<>(paintRepository.findPaintsByNameContaining(name), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(paintRepository.findAll(), HttpStatus.OK);
         }

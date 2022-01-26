@@ -16,4 +16,6 @@ public interface PaintRepository extends JpaRepository<Paint, Long> {
 
     List<Paint> findPaintsByManufacturer(ManufacturerType manufacturer);
 
+    List<Paint> findPaintsByNameContaining(String name);
+
 }
