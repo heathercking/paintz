@@ -25,7 +25,7 @@ public class DataLoader implements ApplicationRunner {
         paintRepository.save(hEmeraldGreen);
 
         Paint hTrainerYellow = new Paint(ManufacturerType.HUMBROL, "24", "AA0268", "Enamel Matt Trainer Yellow", PaintType.ENAMEL, ColourType.YELLOW, "#FECC14", "14ML", 2.19);
-        paintRepository.save(hEmeraldGreen);
+        paintRepository.save(hTrainerYellow);
 
     }
 }

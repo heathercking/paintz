@@ -14,16 +14,33 @@ public class Paint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
+    @Column(name = "manufacturer")
     private ManufacturerType manufacturer;
+
+    @Column(name = "paint_number")
     private String paintNum;
+
+    @Column(name="model_number")
     private String modelNum;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name = "paint_type")
     private PaintType paintType;
+
+    @Column(name = "colour_category")
     private ColourType colourCategory;
+
+    @Column(name = "hex_value")
     private String hexValue;
+
+    @Column(name = "size")
     private String size;
+
+    @Column(name = "price")
     private double price;
+
 
     public Paint(ManufacturerType manufacturer, String paintNum, String modelNum, String name, PaintType paintType, ColourType colourCategory, String hexValue, String size, double price) {
         this.manufacturer = manufacturer;
