@@ -4,9 +4,17 @@ import com.codeclan.example.paintzServer.models.enums.ColourType;
 import com.codeclan.example.paintzServer.models.enums.ManufacturerType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "paints")
 public class Paint {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    
     private ManufacturerType manufacturer;
     private String paintNum;
     private String modelNum;
