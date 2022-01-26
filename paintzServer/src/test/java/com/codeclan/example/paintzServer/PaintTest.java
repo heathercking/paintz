@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -23,8 +25,36 @@ public class PaintTest {
 
     @Test
     public void canSavePaintToDB() {
-        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "XXYAY", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "#005B40", "14ML", 2.19);
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "XXYAY", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
         paintRepository.save(paint1);
+    }
+
+    @Test
+    public void canFindPaintsByHexValue() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "XXYAY", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> found = paintRepository.findPaintsByHexValue("#005B40");
+        assertEquals(2, found.size());
+
+    }
+
+    @Test
+    public void canFindPaintByNumber() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "XXYAY", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> found = paintRepository.findPaintsByPaintNum("XXYAY");
+        assertEquals(1, found.size());
+    }
+
+    @Test
+    public void canFindPaintByManufacturer() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "XXYAY", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> found = paintRepository.findPaintsByManufacturer(ManufacturerType.HUMBROL);
+        assertEquals(3, found.size());
     }
 
 

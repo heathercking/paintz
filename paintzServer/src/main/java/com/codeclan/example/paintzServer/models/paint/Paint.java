@@ -15,6 +15,7 @@ public class Paint {
     private Long id;
 
     @Column(name = "manufacturer")
+    @Enumerated(value = EnumType.STRING)
     private ManufacturerType manufacturer;
 
     @Column(name = "paint_number")
@@ -27,9 +28,11 @@ public class Paint {
     private String name;
 
     @Column(name = "paint_type")
+    @Enumerated(value = EnumType.STRING)
     private PaintType paintType;
 
     @Column(name = "colour_category")
+    @Enumerated(value = EnumType.STRING)
     private ColourType colourCategory;
 
     @Column(name = "hex_value")
@@ -38,11 +41,8 @@ public class Paint {
     @Column(name = "size")
     private String size;
 
-    @Column(name = "price")
-    private double price;
 
-
-    public Paint(ManufacturerType manufacturer, String paintNum, String modelNum, String name, PaintType paintType, ColourType colourCategory, String hexValue, String size, double price) {
+    public Paint(ManufacturerType manufacturer, String paintNum, String modelNum, String name, PaintType paintType, ColourType colourCategory, String hexValue, String size) {
         this.manufacturer = manufacturer;
         this.paintNum = paintNum;
         this.modelNum = modelNum;
@@ -51,7 +51,6 @@ public class Paint {
         this.colourCategory = colourCategory;
         this.hexValue = hexValue;
         this.size = size;
-        this.price = price;
     }
 
     public Paint() {}
@@ -128,11 +127,4 @@ public class Paint {
         this.size = size;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

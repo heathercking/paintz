@@ -21,11 +21,14 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Paint hEmeraldGreen = new Paint(ManufacturerType.HUMBROL, "02", "AA0028", "Enamel Gloss Emerald Green", PaintType.ENAMEL, ColourType.GREEN, "#005B40", "14ML", 2.19);
+        Paint hEmeraldGreen = new Paint(ManufacturerType.HUMBROL, "02", "AA0028", "Enamel Gloss Emerald Green", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
         paintRepository.save(hEmeraldGreen);
 
-        Paint hTrainerYellow = new Paint(ManufacturerType.HUMBROL, "24", "AA0268", "Enamel Matt Trainer Yellow", PaintType.ENAMEL, ColourType.YELLOW, "#FECC14", "14ML", 2.19);
+        Paint hTrainerYellow = new Paint(ManufacturerType.HUMBROL, "24", "AA0268", "Enamel Matt Trainer Yellow", PaintType.ENAMEL, ColourType.YELLOW, "FECC14", "14ML");
         paintRepository.save(hTrainerYellow);
+
+        Paint rTrainerYellow = new Paint(ManufacturerType.REVELL, "24", "AA0268", "Enamel Matt Trainer Yellow", PaintType.ENAMEL, ColourType.YELLOW, "FECC14", "14ML");
+        paintRepository.save(rTrainerYellow);
 
     }
 }
