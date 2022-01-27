@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import App from "../App";
+import '../css/Paintz.css';
 import {getPaints} from '../services/PaintzService';
 
 
