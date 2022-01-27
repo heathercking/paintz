@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PaintController {
 
     @Autowired
@@ -35,8 +36,19 @@ public class PaintController {
         } else {
             return new ResponseEntity<>(paintRepository.findAll(), HttpStatus.OK);
         }
-
     }
+
+    @GetMapping(value = "/users", produces = "application/json")
+    public String users() {
+        return "this is the test users API";
+    }
+
+    @GetMapping(value = "/admin")
+    public String admin() {
+        return "this is the test ADMIN API";
+    }
+
+
 
 
 

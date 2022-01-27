@@ -64,3 +64,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+!**/src/main/resources/baeldung.p12
