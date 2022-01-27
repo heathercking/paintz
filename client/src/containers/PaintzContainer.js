@@ -4,7 +4,7 @@ import {getPaints} from '../services/PaintzService';
 
 
 
-const Paintz = () => {
+const PaintzContainer = () => {
 
     const [paints, setPaints] = useState([]);
 
@@ -25,4 +25,4 @@ const Paintz = () => {
     )
 }
 
-export default Paintz;
+export default PaintzContainer;

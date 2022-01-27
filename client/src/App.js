@@ -1,9 +1,10 @@
 import './App.css';
-import Paintz from './containers/PaintzContainer';
+import PaintzContainer from './containers/PaintzContainer';
+
 
 function App() {
   return (
-      <Paintz/>
+      <PaintzContainer/>
   );
 }
 
