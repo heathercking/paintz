@@ -6,14 +6,6 @@ import {getPaints} from '../services/PaintzService';
 
 const PaintzContainer = () => {
 
-    const [paints, setPaints] = useState([]);
-
-    useEffect(() => {
-        getPaints()
-        .then(data => {setPaints(data)})
-    }, [])
-
-    console.log(paints);
 
     return (
         <>
