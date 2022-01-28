@@ -1,4 +1,6 @@
-package com.codeclan.example.paintzServer.models.people;
+package com.codeclan.example.paintzServer.models.user;
+
+import com.codeclan.example.paintzServer.models.paint.PaintInventory;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -6,8 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Table(name="user_accounts")
-public class UserAccount {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +33,7 @@ public class UserAccount {
 
 //    private PaintInventory paintInventory;
 
-    public UserAccount(String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
         this.roles = "";
@@ -40,7 +42,7 @@ public class UserAccount {
 //        this.paintInventory = paintInventory;
     }
 
-    protected UserAccount() {}
+    protected User() {}
 
     public Long getId() {
         return id;

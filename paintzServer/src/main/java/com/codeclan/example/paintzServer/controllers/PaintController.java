@@ -1,11 +1,10 @@
 package com.codeclan.example.paintzServer.controllers;
 
-
 import com.codeclan.example.paintzServer.models.enums.ManufacturerType;
 import com.codeclan.example.paintzServer.models.paint.Paint;
-import com.codeclan.example.paintzServer.models.people.UserAccount;
+import com.codeclan.example.paintzServer.models.user.User;
 import com.codeclan.example.paintzServer.repositories.PaintRepository;
-import com.codeclan.example.paintzServer.repositories.UserAccountRepository;
+import com.codeclan.example.paintzServer.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,9 @@ public class PaintController {
 
     @Autowired
     PaintRepository paintRepository;
-    UserAccountRepository userAccountRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping(value = "/paints", produces = "application/json")
     public ResponseEntity<List<Paint>> getPaints(
@@ -42,8 +43,8 @@ public class PaintController {
     }
 
     @GetMapping(value = "/users")
-    public List<UserAccount> userAccounts() {
-        return userAccountRepository.findAll();
+    public List<User> users() {
+        return userRepository.findAll();
     }
 
     @GetMapping(value = "/admin")
