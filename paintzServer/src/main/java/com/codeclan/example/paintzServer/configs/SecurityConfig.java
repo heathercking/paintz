@@ -22,12 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("admin")
-                    .password(passwordEncoder().encode("admin123"))
-                    .roles("ADMIN").authorities("ACCESS_ADMIN")
+                .withUser("admin@test.com")
+                    .password(passwordEncoder().encode("admin"))
+                    .roles("ADMIN").authorities("ACCESS_ADMIN", "ROLE_ADMIN")
                 .and()
-                .withUser("dan")
-                    .password(passwordEncoder().encode("dan123"))
+                .withUser("heather@test.com")
+                    .password(passwordEncoder().encode("password"))
                     .roles("USER");
     }
 
@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin").hasRole("ADMIN")  // can comma separate multiple roles
                 .antMatchers("/api/users").hasRole("USER")
                 .antMatchers("/api/admin").hasAuthority("ACCESS_ADMIN")
+                .antMatchers("/api/users").hasRole("ADMIN")
                 .and()
                 .httpBasic();
     }
