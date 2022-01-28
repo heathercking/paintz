@@ -38,10 +38,10 @@ public class DataLoader implements ApplicationRunner {
         Paint rTrainerYellow = new Paint(ManufacturerType.REVELL, "24", "AA0268", "Enamel Matt Trainer Yellow", PaintType.ENAMEL, ColourType.YELLOW, "FECC14", "14ML");
         paintRepository.save(rTrainerYellow);
 
-        User heather = new User("heather@test.com", "password");
+        User heather = new User("heather@test.com", passwordEncoder.encode("password"), "USER", "ROLE_USER");
         userRepository.save(heather);
 
-        User admin = new User("admin@test.com", passwordEncoder.encode("admin"));
+        User admin = new User("admin@test.com", passwordEncoder.encode("admin"), "ADMIN", "ACCESS_ADMIN");
         userRepository.save(admin);
 
     }
