@@ -1,5 +1,6 @@
 package com.codeclan.example.paintzServer.configs.security;
 
+import com.codeclan.example.paintzServer.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +9,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
@@ -17,6 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserPrincipalDetailsService userPrincipalDetailsService;
+
+    @Autowired
+    UserRepository userRepository;
+
 
     // this one defines data source for the users
     // authorities allow you to get granular with permissions within roles (roles are less flexible but great for simple apps)
@@ -34,24 +42,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                    .roles("USER");
     }
 
-
-
     // this one authorises requests
     // order of the antMatchers is important - executed in order
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-//                .anyRequest().authenticated() // or .permitAll()
-                .antMatchers("/api/paints").permitAll()
-//                .antMatchers("/user/**").authenticated()
-//                .antMatchers("/admin").hasRole("ADMIN")  // can comma separate multiple roles
-                .antMatchers("/api/users").hasRole("USER")
-                .antMatchers("/api/admin").hasAuthority("ACCESS_ADMIN")
-                .antMatchers("/api/users").hasRole("ADMIN")
+
+                .csrf().disable() // removes cross site request forgery, makes application lighter, could be added back in?
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // removes sessions
                 .and()
-                .httpBasic();
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
+                .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/api/users").hasRole("ADMIN")
+                .antMatchers("/api/admin").hasRole("ADMIN");
+
+
+////                .anyRequest().authenticated() // or .permitAll()
+//                .antMatchers("/api/paints").permitAll()
+////                .antMatchers("/user/**").authenticated()
+////                .antMatchers("/admin").hasRole("ADMIN")  // can comma separate multiple roles
+//                .antMatchers("/api/users").hasRole("USER")
+//                .antMatchers("/api/admin").hasAuthority("ACCESS_ADMIN")
+//                .antMatchers("/api/users").hasRole("ADMIN")
+//                .and()
+//                .httpBasic();
     }
+
+
+
+
 
     // setting up an authentication provider, rather than using in-memory authentication
     @Bean
