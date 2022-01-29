@@ -11,6 +11,7 @@ import PaintSearchContainer from './containers/PaintSearchContainer';
 import PaintConverterContainer from './containers/PaintConverterContainer';
 import LoginContainer from './containers/LoginContainer';
 import UserInventoryContainer from './containers/UserInventoryContainer';
+import RegisterContainer from './containers/RegisterContainer';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
       <Router>
         <nav>
           <Link to="/home"> Home </Link>
+          <Link to="/login"> Login </Link>
+          <Link to="/register"> Register </Link>
+          <Link to="/"> Paintz </Link>
         </nav>
         <Routes>
           <Route path="/" element={ <PaintzContainer /> } />
@@ -27,6 +31,7 @@ function App() {
           <Route path="/search" element={ <PaintSearchContainer /> } />
           <Route path="/convert" element={ <PaintConverterContainer /> } />
           <Route path="/login" element={ <LoginContainer /> } />
+          <Route path="/register" element={ <RegisterContainer /> } />
           <Route path="/inventory" element={ <UserInventoryContainer /> } />
           </Routes>
       </Router>

@@ -41,7 +41,7 @@ public class PaintzServerApplication {
 
 	/*
     We need to redirect from HTTP to HTTPS. Without SSL, this application used
-    port 8080. With SSL it will use port 8443. So, any request for 8082 needs to be
+    port 8080. With SSL it will use port 8443. So, any request for 8080 needs to be
     redirected to HTTPS on 8443.
      */
 	private Connector httpToHttpsRedirectConnector() {
