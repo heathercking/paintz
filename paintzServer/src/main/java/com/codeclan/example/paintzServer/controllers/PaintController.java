@@ -38,6 +38,21 @@ public class PaintController {
 
     }
 
+    @GetMapping(value = "paints/converter")
+    public ResponseEntity<List<Paint>> getConvertedPaints(
+            @RequestParam(name="number", required = true) String number,
+            @RequestParam(name="manufacturer", required = true) String manufacturer
+    ) {
+        if (number != null && manufacturer != null) {
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(manufacturer.toUpperCase()));
+            String hexValue = found.getHexValue();
+            return new ResponseEntity<List<Paint>>(paintRepository.findPaintsByHexValue(hexValue), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(paintRepository.findAll(), HttpStatus.OK);
+        }
+    }
+
 
 
 }
