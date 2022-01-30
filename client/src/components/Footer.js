@@ -7,7 +7,7 @@ function Footer() {
         <div className="footer">
           <div className="footer-wrapper">
             {/* <img className ="footer-logo" alt="Logo" /> */}
-            <p>Copyright&copy; Team 2022</p>
+            <p id="footer-text">Copyright&copy; Team 2022</p>
           </div>
         </div>
     )

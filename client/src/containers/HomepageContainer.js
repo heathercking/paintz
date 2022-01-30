@@ -35,13 +35,13 @@ function HomePageContainer() {
         <section className="homepage">
             <div className="homepage-contents">
                 <div className="homepage-welcome-text">
-                    <h1>Welcome to</h1>
+                    <h1 id="welcome-heading">welcome to</h1>
                     <img className="main-logo" src={mainLogo} alt=""/>
-                    <p>The Model Paints App</p>
+                    <p id="welcome-para">the model paints app</p>
                 </div>
                 <div className="welcome-buttons">
-                    <button type="" onClick={handleConverterClick}>Paint Converter</button>
-                    <button type="" onClick={handleSearchClick}>Paint Search</button>
+                    <button className="welcome-btn" type="" onClick={handleConverterClick}>Paint Converter</button>
+                    <button className="welcome-btn" type="" onClick={handleSearchClick}>Paint Search</button>
                 </div>
             </div>
             

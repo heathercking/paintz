@@ -1,8 +1,40 @@
 .homepage {
-    min-height: 70vh;
+    min-height: 80vh;
     text-align: center;
 }
 
 .main-logo {
-    width: 50%;
+    width: 60%;
+}
+
+#welcome-heading {
+    margin: 20px 0 0 0;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+#welcome-para {
+    margin: 0 0 40px 0;
+    font-size: 2rem;
+}
+
+.welcome-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-btn {
+    width: 120px;
+    height: 60px;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 3px 10px rgba(186,0,96,0.3);
+    background-color: black;
+    color: white;
+    font-weight: 800;
+    font-size: 1rem;
 }

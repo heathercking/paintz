@@ -23,17 +23,19 @@ const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
 
     return (
         <>
-            <h2>Exact Matches</h2>
-            <ul>
-                {/* {matchedPaints.map((paint, index) => {
-                    return (
-                        <li key={index}>
-                            {paint.manufacturer}, {paint.paintNum}, {paint.name}
-                        </li>
-                    )
-                })} */}
-            </ul>
-            <h2>Closest Matches</h2>
+            <section className="converter-results">
+                <h2>Exact Matches</h2>
+                <ul>
+                    {/* {matchedPaints.map((paint, index) => {
+                        return (
+                            <li key={index}>
+                                {paint.manufacturer}, {paint.paintNum}, {paint.name}
+                            </li>
+                        )
+                    })} */}
+                </ul>
+                <h2>Closest Matches</h2>
+            </section>
 
         </>
     )

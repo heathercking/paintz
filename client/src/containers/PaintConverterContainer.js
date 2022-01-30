@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { getPaints, getExactMatches, getClosestMatches } from '../services/PaintzService';
 import ConverterResults from "../components/ConverterResults";
+import '../css/PaintConverter.css'
 
 
 function PaintConverterContainer() {
@@ -50,40 +51,43 @@ function PaintConverterContainer() {
 
     return (
         <>
-            <div>
-                This is the paint converter page
-            </div>
-            <div>
-                <form >
-                    <input 
-                        onChange={handleNumChange}
-                        type="text"
-                        name="number"
-                        autoComplete="off"
-                        placeholder="enter paint number"
-                        value={searchNum} 
-                        />
+            <section className="paint-converter">
+            
+                <div>
+                    This is the paint converter page
+                </div>
+                <div>
+                    <form >
+                        <input 
+                            onChange={handleNumChange}
+                            type="text"
+                            name="number"
+                            autoComplete="off"
+                            placeholder="enter paint number"
+                            value={searchNum} 
+                            />
 
-                    {/* <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
-                    <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
-                    <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button> */}
+                        {/* <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
+                        <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
+                        <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button> */}
 
-                    <input 
-                        onChange={handleManuChange}
-                        type="text"
-                        name="manu"
-                        autoComplete="off"
-                        placeholder="enter manufacturer"
-                        value={searchManu} 
-                        />
+                        <input 
+                            onChange={handleManuChange}
+                            type="text"
+                            name="manu"
+                            autoComplete="off"
+                            placeholder="enter manufacturer"
+                            value={searchManu} 
+                            />
 
-                    <button onClick={handleSubmit} type="Submit">Convert!</button>
-                </form>
-            </div>
+                        <button onClick={handleSubmit} type="Submit">Convert!</button>
+                    </form>
+                </div>
 
-            <div>
-                <ConverterResults allPaints={paints} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
-            </div>
+                <div>
+                    <ConverterResults allPaints={paints} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
+                </div>
+            </section>
         </>
     )
 }
