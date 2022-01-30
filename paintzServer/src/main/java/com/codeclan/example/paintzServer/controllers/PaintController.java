@@ -44,7 +44,8 @@ public class PaintController {
             @RequestParam(name="manufacturer", required = true) String manufacturer
     ) {
         if (number != null && manufacturer != null) {
-            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(manufacturer.toUpperCase()));
+            String upperManufacturer = manufacturer.toUpperCase();
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(upperManufacturer));
             String hexValue = found.getHexValue();
             return new ResponseEntity<List<Paint>>(paintRepository.findPaintsByHexValue(hexValue), HttpStatus.OK);
         }
@@ -59,7 +60,8 @@ public class PaintController {
             @RequestParam(name="manufacturer", required = true) String manufacturer
     ) {
         if (number != null && manufacturer != null) {
-            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(manufacturer.toUpperCase()));
+            String upperManufacturer = manufacturer.toUpperCase();
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(upperManufacturer));
             return new ResponseEntity<List<Paint>>(found.findClosestMatches(paintRepository.findAll()), HttpStatus.OK);
         }
         else {
