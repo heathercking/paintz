@@ -11,13 +11,11 @@ const PaintzContainer = () => {
     return (
         <>
         <div className="welcome-page">
-        <h1>Paintz!</h1>
+        <h1 className="main-logo">Paintz!</h1>
             <h2>the model paint app</h2>
 
+
             <button type="">Sign In</button>
-            <br/>
-            OR
-            <br/>
             <button type="">Enter As Guest</button>   
         </div>
 

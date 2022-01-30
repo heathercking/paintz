@@ -1,0 +1,23 @@
+.footer {
+    width: 100%;
+    background-color: black;
+    height: 15vh;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-wrapper {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer-logo {
+    height: 100%;
+    width: max(450px, 25vw);
+  }

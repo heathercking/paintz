@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import App from "../App";
 import {useNavigate} from 'react-router-dom';
+import '../css/Homepage.css'
 
 import {getPaints} from '../services/PaintzService';
 import PaintSearchContainer from "./PaintSearchContainer";
+import mainLogo from "../assets/PaintzLogo_White_1300x500.png"
 
 function HomePageContainer() {
 
@@ -29,12 +31,23 @@ function HomePageContainer() {
 
 
     return (
-        <div>
-            This is the home page
-            <button type="" onClick={handleSearchClick}>Search</button>
-            <button type="" onClick={handleConverterClick}>Converter</button>
+        <>
+        <section className="homepage">
+            <div className="homepage-contents">
+                <div className="homepage-welcome-text">
+                    <h1>Welcome to</h1>
+                    <img className="main-logo" src={mainLogo} alt=""/>
+                    <p>The Model Paints App</p>
+                </div>
+                <div className="welcome-buttons">
+                    <button type="" onClick={handleConverterClick}>Paint Converter</button>
+                    <button type="" onClick={handleSearchClick}>Paint Search</button>
+                </div>
+            </div>
             
-        </div>
+        </section>
+
+        </>
     )
 }
 

@@ -1,7 +1,13 @@
 .welcome-page {
     margin-top: 0;
+    padding: 10%;
     text-align: center;
     color: white;
     background-color: black;
     min-height: 94vh;
+}
+
+.main-logo {
+    margin: 0;
+    padding: 0;
 }

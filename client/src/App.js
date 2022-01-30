@@ -29,8 +29,8 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={ <PaintzContainer /> } />
-          <Route path="/home" element={ <HomePageContainer /> } />
+          {/* <Route path="/" element={ <PaintzContainer /> } /> */}
+          <Route path="/" element={ <HomePageContainer /> } />
           <Route path="/search" element={ <PaintSearchContainer /> } />
           <Route path="/convert" element={ <PaintConverterContainer /> } />
           <Route path="/login" element={ <LoginContainer /> } />
