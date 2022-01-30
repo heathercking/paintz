@@ -80,6 +80,16 @@ public class PaintTest {
 
     }
 
+    @Test
+    public void canFindPaintsWithSimilarHexValues() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "A79656", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> allPaints = paintRepository.findAll();
+        List<Paint> found = paint1.findClosestMatches(allPaints);
+        assertEquals(6, found.size());
+    }
+
 
 
 }

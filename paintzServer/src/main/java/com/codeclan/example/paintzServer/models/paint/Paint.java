@@ -5,6 +5,8 @@ import com.codeclan.example.paintzServer.models.enums.ManufacturerType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "paints")
@@ -127,4 +129,15 @@ public class Paint {
         this.size = size;
     }
 
+    public List<Paint> findClosestMatches(List<Paint> allPaints) {
+        List<Paint> results = new ArrayList<Paint>();
+
+        for (Paint paint : allPaints) {
+            if (paint.getHexValue().equals(this.hexValue)) {
+                results.add(paint);
+            }
+        }
+
+        return results;
+    }
 }
