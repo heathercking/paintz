@@ -3,14 +3,14 @@ import { getEquivalentPaints } from '../services/PaintzService';
 
 
 
-const ConverterResults = ( {paintNumber, paintManufacturer} ) => {
+const ConverterResults = ( {paintNumber, paintManu} ) => {
 
-    if (!paintManufacturer) {
+    if (!paintManu) {
         return null
     }
 
     const getResults = () => {
-        let results = getEquivalentPaints(paintNumber, paintManufacturer);
+        let results = getEquivalentPaints(paintNumber, paintManu);
         return results
     }
     
@@ -23,16 +23,17 @@ const ConverterResults = ( {paintNumber, paintManufacturer} ) => {
 
     return (
         <>
-            <h2>This is the paint converter input/output component</h2>
+            <h2>Exact Matches</h2>
             <ul>
-                {/* {getResults.map((paint, index) => {
+                {/* {matchedPaints.map((paint, index) => {
                     return (
                         <li key={index}>
-                            {paint.paintNum}
+                            {paint.manufacturer}, {paint.paintNum}, {paint.name}
                         </li>
                     )
                 })} */}
             </ul>
+            <h2>Closest Matches</h2>
 
         </>
     )

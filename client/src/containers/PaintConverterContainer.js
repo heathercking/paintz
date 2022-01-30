@@ -19,12 +19,11 @@ function PaintConverterContainer() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setSearchManu(event.target.id);
-        console.log(searchManu);
+        // setSearchNum(event.target.value);
+        // console.log(searchManu);
+        // setSearchResults(getEquivalentPaints(searchNum, searchManu));
     }
 
-    // const getMatchedPaints = () => {
-    //     getEquivalentPaints(searchNum, searchManu);
-    // }
 
     return (
         <>
@@ -36,19 +35,19 @@ function PaintConverterContainer() {
                     <input 
                         onChange={handleChange}
                         type="text"
-                        name="paint-number"
+                        name="number"
                         placeholder="enter paint number"
                         value={searchNum} 
                         />
                     {/* <p>Select the brand</p> */}
-                    <button onClick={handleSubmit} type="Submit" id="humbrol">Humbrol</button>
-                    <button onClick={handleSubmit} type="Submit" id="revell">Revell</button>
-                    <button onClick={handleSubmit} type="Submit" id="tamiya">Tamiya</button>
+                    <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
+                    <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
+                    <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button>
                 </form>
             </div>
 
             <div>
-                <ConverterResults paintNumber={searchNum} paintManufacturer={searchManu}/>
+                <ConverterResults paintNumber={searchNum} paintManu={searchManu} />
             </div>
         </>
     )

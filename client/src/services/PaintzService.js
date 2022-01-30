@@ -24,3 +24,10 @@ export const getEquivalentPaints = (number, manufacturer) => {
         .then(res => res.json())
     )
 }
+
+export const getClosestMatches = (number, manufacturer) => {
+    return(
+        fetch(baseURL + "paints/converter/equivalents" + "?number=" + number + "&manufacturer=" + manufacturer)
+        .then(res => res.json())
+    )
+}
