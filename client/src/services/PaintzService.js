@@ -17,3 +17,10 @@ export const getPaints = () => {
         .then(res => res.json())
     )
 }
+
+export const getEquivalentPaints = (number, manufacturer) => {
+    return(
+        fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
+        .then(res => res.json())
+    )
+}
