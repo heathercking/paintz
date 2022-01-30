@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { getEquivalentPaints } from '../services/PaintzService';
+import { getPaints, getExactMatches, getClosestMatches } from '../services/PaintzService';
 import ConverterResults from "../components/ConverterResults";
 
 
@@ -7,22 +7,45 @@ function PaintConverterContainer() {
 
     const [searchNum, setSearchNum] = useState("");
     const [searchManu, setSearchManu] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const [exactMatches, setExactMatches] = useState([]);
+    const [closestMatches, setClosestMatches] = useState([]);
+    const [paints, setPaints] = useState([]);
 
 
-    const handleChange = (event) => {
+    useEffect(() => {
+        getPaints()
+        .then(data => {setPaints(data)})
+    }, [])
+
+
+    const handleNumChange = (event) => {
         event.preventDefault();
         setSearchNum(event.target.value);
         console.log(searchNum);
     }
 
-    const handleSubmit = (event) => {
+    const handleManuChange = (event) => {
         event.preventDefault();
-        setSearchManu(event.target.id);
-        // setSearchNum(event.target.value);
-        // console.log(searchManu);
-        // setSearchResults(getEquivalentPaints(searchNum, searchManu));
+        setSearchManu(event.target.value);
+        console.log(searchNum);
     }
+
+    const handleSubmit = (event) => {
+        getMatches();  
+        getCloseMatches();
+    }
+
+    const getMatches = () => {
+        getExactMatches(searchNum, searchManu)
+        .then(data => {setExactMatches(data)})
+    }
+
+    const getCloseMatches = () => {
+        getClosestMatches(searchNum, searchManu)
+        .then(data => {setClosestMatches(data)})
+    }
+
+    
 
 
     return (
@@ -33,21 +56,33 @@ function PaintConverterContainer() {
             <div>
                 <form >
                     <input 
-                        onChange={handleChange}
+                        onChange={handleNumChange}
                         type="text"
                         name="number"
+                        autoComplete="off"
                         placeholder="enter paint number"
                         value={searchNum} 
                         />
-                    {/* <p>Select the brand</p> */}
-                    <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
+
+                    {/* <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
                     <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
-                    <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button>
+                    <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button> */}
+
+                    <input 
+                        onChange={handleManuChange}
+                        type="text"
+                        name="manu"
+                        autoComplete="off"
+                        placeholder="enter manufacturer"
+                        value={searchManu} 
+                        />
+
+                    <button onClick={handleSubmit} type="Submit">Convert!</button>
                 </form>
             </div>
 
             <div>
-                <ConverterResults paintNumber={searchNum} paintManu={searchManu} />
+                <ConverterResults allPaints={paints} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
             </div>
         </>
     )

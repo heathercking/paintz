@@ -1,24 +1,24 @@
 import React from 'react';
-import { getEquivalentPaints } from '../services/PaintzService';
 
 
 
-const ConverterResults = ( {paintNumber, paintManu} ) => {
+const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
 
-    if (!paintManu) {
+    if (!allExactMatches) {
         return null
     }
 
-    const getResults = () => {
-        let results = getEquivalentPaints(paintNumber, paintManu);
-        return results
-    }
+    // const getResults = () => {
+    //     let results = getEquivalentPaints(paintNumber, paintManu);
+    //     return results
+    // }
     
+
     
-    const matchedPaints = getResults();
 
-    console.log(matchedPaints);
-
+    console.log(allPaints);
+    console.log(allExactMatches);
+    console.log(allCloseMatches);
 
 
     return (
