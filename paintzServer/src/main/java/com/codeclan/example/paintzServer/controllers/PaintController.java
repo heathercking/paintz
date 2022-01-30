@@ -53,6 +53,20 @@ public class PaintController {
         }
     }
 
+    @GetMapping(value = "paints/converter/equivalents")
+    public ResponseEntity<List<Paint>> getClosestMatches(
+            @RequestParam(name="number", required = true) String number,
+            @RequestParam(name="manufacturer", required = true) String manufacturer
+    ) {
+        if (number != null && manufacturer != null) {
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(manufacturer.toUpperCase()));
+            return new ResponseEntity<List<Paint>>(found.findClosestMatches(paintRepository.findAll()), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(paintRepository.findAll(), HttpStatus.OK);
+        }
+    }
+
 
 
 }
