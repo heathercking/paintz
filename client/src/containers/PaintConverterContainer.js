@@ -92,25 +92,28 @@ function PaintConverterContainer() {
                 <div>
                     <form >
                         <div>
-                        <input 
-                            onChange={handleNumChange}
-                            type="text"
-                            name="number"
-                            autoComplete="off"
-                            placeholder="enter paint number"
-                            value={searchNum} 
-                            />
+                            <div>
+                            <input 
+                                onChange={handleNumChange}
+                                type="text"
+                                name="number"
+                                autoComplete="off"
+                                placeholder="enter paint number"
+                                value={searchNum} 
+                                />
+                            {/* </div> */}
+
+                            {/* <div> */}
+                            {/* <label for="manufacturer">Select a brand:</label> */}
+                            <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
+                                <option className="placeholder" placeholder="Choose"></option>
+                                <option value="humbrol">Humbrol</option>
+                                <option value="revell">Revell</option>
+                                <option value="tamiya">Tamiya</option>
+                            </select>
+                            </div>
                         </div>
 
-                        <div>
-                        {/* <label for="manufacturer">Select a brand:</label> */}
-                        <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
-                            <option className="placeholder" placeholder="Choose"></option>
-                            <option value="humbrol">Humbrol</option>
-                            <option value="revell">Revell</option>
-                            <option value="tamiya">Tamiya</option>
-                        </select>
-                        </div>
 
 
 
