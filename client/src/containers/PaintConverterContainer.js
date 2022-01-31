@@ -86,7 +86,7 @@ function PaintConverterContainer() {
                 </div>
 
                 <div>
-                    <ConverterResults allPaints={paints} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
+                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
                 </div>
             </section>
         </>

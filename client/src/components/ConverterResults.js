@@ -2,7 +2,7 @@ import React from 'react';
 // import Circle from './Circle';
 
 
-const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
+const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches} ) => {
 
     if (!allExactMatches) {
         return null
@@ -11,6 +11,7 @@ const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
     console.log(allPaints);
     console.log(allExactMatches);
     console.log(allCloseMatches);
+    console.log(`manu = ` + manufacturer);
 
 
     const Circle = (colour) => {
@@ -36,27 +37,54 @@ const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
     return (
         <>
             <section className="converter-results">
+
                 <h2>Exact Matches</h2>
-                    {allExactMatches.map((paint, index) => {
-                        return (
-                            <div key={index}>
-                                {/* <Circle /> */}
-                                <div >
-                                    {Circle(paint.hexValue)}
+
+                    <div id="searched-paint">
+                        {allExactMatches.map((paint, index) => {
+                            if (paint.manufacturer.toLowerCase() == manufacturer) {
+                                console.log(paint.manufacturer)
+                                console.log(paint.manufacturer.toLowerCase())
+                                return (
+                                    <div key={index}>
+                                    <div >
+                                        {Circle(paint.hexValue)}
+                                    </div>
+                                    {paint.manufacturer} No. {paint.paintNum}
+                                    <br/>{paint.name}
                                 </div>
-                                <br/>
-                                {paint.manufacturer} No. {paint.paintNum}
-                                <br/>{paint.name}
-                            </div>
-                        )
-                    })}
-                <h2>Closest Matches</h2>
+                                )
+                            }})}
+                    </div>
+                    <div id="exact-matches">
+                        {allExactMatches.map((paint, index) => {
+                            if (paint.manufacturer.toLowerCase() != manufacturer) {
+                                return (
+                                    <div key={index}>
+                                    <div >
+                                        {Circle(paint.hexValue)}
+                                    </div>
+                                    {paint.manufacturer} No. {paint.paintNum}
+                                    <br/>{paint.name}
+                                </div>
+                                )
+                            }})}
+                    </div>
+                    
+                    {/* return ( 
+                        <span id="matched-paint" key={index}>
+                                {Circle(paint.hexValue)}
+
+                            {paint.manufacturer} No. {paint.paintNum}
+                            <br/>{paint.name}
+                        </span>
+                    ) */}
+
+                <h2 className="closest-matches">Closest Matches</h2>
                     {allCloseMatches.map((paint, index) => {
                         return (
                             <div key={index}>
-                                <div >
-                                    {Circle(paint.hexValue)}
-                                </div>
+                                {Circle(paint.hexValue)}
                                 {paint.manufacturer} No. {paint.paintNum}
                                 <br/>{paint.name}
                             </div>
