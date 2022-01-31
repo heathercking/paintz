@@ -55,7 +55,7 @@ function PaintConverterContainer() {
             <section className="paint-converter">
             
                 <div>
-                    This is the paint converter page
+                   Enter some instruction here....
                 </div>
                 <div>
                     <form >

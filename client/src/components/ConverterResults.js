@@ -8,33 +8,36 @@ const ConverterResults = ( {allPaints, allExactMatches, allCloseMatches} ) => {
         return null
     }
 
-    // const getResults = () => {
-    //     let results = getEquivalentPaints(paintNumber, paintManu);
-    //     return results
-    // }
-    
-
-    
-
     console.log(allPaints);
     console.log(allExactMatches);
     console.log(allCloseMatches);
+
+
+
 
 
     return (
         <>
             <section className="converter-results">
                 <h2>Exact Matches</h2>
-                <ul>
-                    {/* {matchedPaints.map((paint, index) => {
+                    {allExactMatches.map((paint, index) => {
                         return (
-                            <li key={index}>
-                                {paint.manufacturer}, {paint.paintNum}, {paint.name}
-                            </li>
+                            <div key={index}>
+                                {paint.manufacturer} No. {paint.paintNum}
+                                <br/>{paint.name}
+                            </div>
                         )
-                    })} */}
-                </ul>
+                    })}
                 <h2>Closest Matches</h2>
+                    {allCloseMatches.map((paint, index) => {
+                        return (
+                            <div key={index}>
+                                {paint.manufacturer} No. {paint.paintNum}
+                                <br/>{paint.name}
+                            </div>
+                        )
+                    })}
+
             </section>
 
         </>
