@@ -1,5 +1,6 @@
 import React from 'react';
 // import Circle from './Circle';
+import '../css/ConverterResults.css'
 
 
 const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches} ) => {
@@ -18,8 +19,8 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
         // let colour = ""
 
         var circleStyle = {
-            padding:10,
-            margin:20,
+            padding:5,
+            margin:10,
             display:"inline-block",
             backgroundColor: '#'+colour,
             borderRadius: "50%",
@@ -39,57 +40,59 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
             <section className="converter-results">
 
                 <h2>Exact Matches</h2>
-
-                    <div id="searched-paint">
+                <div className="searched-section">
+                    <div className="container flex">
                         {allExactMatches.map((paint, index) => {
                             if (paint.manufacturer.toLowerCase() == manufacturer) {
                                 console.log(paint.manufacturer)
                                 console.log(paint.manufacturer.toLowerCase())
                                 return (
-                                    <div key={index}>
-                                    <div >
+                                    <div className="card" key={index}>
+                                        {paint.manufacturer} No. {paint.paintNum}
+                                    <div className="circle" >
                                         {Circle(paint.hexValue)}
                                     </div>
-                                    {paint.manufacturer} No. {paint.paintNum}
-                                    <br/>{paint.name}
+                                    {paint.name}
                                 </div>
                                 )
                             }})}
                     </div>
-                    <div id="exact-matches">
+                </div>
+
+                <div id="exact-matches">
+                    <div className="container flex">
                         {allExactMatches.map((paint, index) => {
                             if (paint.manufacturer.toLowerCase() != manufacturer) {
                                 return (
-                                    <div key={index}>
-                                    <div >
-                                        {Circle(paint.hexValue)}
+                                    <div className="card" key={index}>
+                                        {paint.manufacturer} No. {paint.paintNum}
+                                        <div className="circle">
+                                            {Circle(paint.hexValue)}
+                                        </div>
+                                        {paint.name}
                                     </div>
-                                    {paint.manufacturer} No. {paint.paintNum}
-                                    <br/>{paint.name}
-                                </div>
                                 )
                             }})}
                     </div>
-                    
-                    {/* return ( 
-                        <span id="matched-paint" key={index}>
-                                {Circle(paint.hexValue)}
+                </div>
 
-                            {paint.manufacturer} No. {paint.paintNum}
-                            <br/>{paint.name}
-                        </span>
-                    ) */}
+                <h2>Closest Matches</h2>
+                    <div className="closest-matches">
+                        <div className="container flex">
+                            {allCloseMatches.map((paint, index) => {
+                                return (
+                                    <div className="card" key={index}>
+                                        {paint.manufacturer} No. {paint.paintNum}
+                                        <div className="circle">
+                                            {Circle(paint.hexValue)}
+                                        </div>
+                                        {paint.name}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
 
-                <h2 className="closest-matches">Closest Matches</h2>
-                    {allCloseMatches.map((paint, index) => {
-                        return (
-                            <div key={index}>
-                                {Circle(paint.hexValue)}
-                                {paint.manufacturer} No. {paint.paintNum}
-                                <br/>{paint.name}
-                            </div>
-                        )
-                    })}
 
             </section>
 
