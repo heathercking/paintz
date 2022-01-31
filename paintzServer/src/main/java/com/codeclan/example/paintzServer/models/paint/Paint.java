@@ -158,7 +158,7 @@ public class Paint {
             float greenDiff = (255 - Math.abs(green1 - green2)) / 255;
             float blueDiff = (255 - Math.abs(blue1 - blue2)) / 255;
 
-            if ((redDiff + greenDiff + blueDiff) / 3 >= 0.93 && paintHex != this.hexValue) {
+            if ((redDiff + greenDiff + blueDiff) / 3 >= 0.93 && !paintHex.equals(this.hexValue)) {
                 results.add(paint);
             }
         }
