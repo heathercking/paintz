@@ -7,13 +7,13 @@ const SearchResults = ({paints}) => {
     const paintsItems = paints.map((paint, index) => {
         return <SearchResultsItem paint={paint} key={index} />
     })
-
+    
 
     return (
         <div>
-            <ul>
+            <p>
                 {paintsItems}
-            </ul>
+            </p>
         </div>
     )
 }

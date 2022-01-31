@@ -5,21 +5,8 @@ const SearchResultsItem = ({paint}) => {
 
     return (
         <>
-            <ul>
-            <li>
-                {paint.name}
-            </li>
-            <li>
-                Paint Number:
-                {paint.paintNum}
-            </li>
-            <li>
-                Model Number: 
-                {paint.modelNum}
-            </li>
+            <a className="paintItem">{paint.paintNum} - {paint.name}</a>
             <br></br>
-            </ul>
-
         </>
     )
 }

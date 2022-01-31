@@ -1,32 +1,38 @@
 import React, {useState, useEffect}  from 'react';
+import SearchResults from './SearchResults';
 
-const Search = ({handleChange}) => {
+
+function Search ({handleChange})  {
     const [searchTerm, setSearchTerm] = useState("");
-
+  
     const changeSearchTerm = (event) => {
-        event.preventDefault();
-        setSearchTerm(event.target.value);
+      event.preventDefault();
+      setSearchTerm(event.target.value);
     }
-
+  
     useEffect(() => {
-        handleChange(searchTerm);
+      handleChange(searchTerm);
     }, [searchTerm]);
-
+  
     const handleSubmit = (event) => {
-        event.preventDefault();
+      event.preventDefault();
     }
-
 
     return (
         <form onSubmit={handleSubmit}>
-        <input
-        onChange={changeSearchTerm}
-        type="text"
-        name="searchTerm"
-        placeholder="Filter Paints"
-        value={searchTerm} />
-    </form>
+          <input
+            onChange={changeSearchTerm}
+            type="text"
+            name="searchTerm"
+            placeholder="search paints.."
+            value={searchTerm} />
+        </form>
+
     );
+
+
+
 }
+
 
 export default Search;

@@ -53,7 +53,7 @@ public class DataLoader implements ApplicationRunner {
         paintRepository.save(hSatinWhite);
         Paint hGermanCamouflageRedBrown = new Paint(ManufacturerType.HUMBROL,"160","AA7224","Humbrol Matt German Camouflage Red Brown",PaintType.ACRYLIC,ColourType.GREEN,"393227","50ML");
         paintRepository.save(hGermanCamouflageRedBrown);
-        Paint hRAFHemp = new Paint(ManufacturerType.HUMBROL,"168","AA7226","Humbrol RAF Hemp",PaintType.ENAMEL,ColourType.GREEN,"A79656","14ML");
+        Paint hRAFHemp = new Paint(ManufacturerType.HUMBROL,"168","AA7226","Humbrol RAF Hemp",PaintType.ENAMEL,ColourType.GREEN,"B6A690","14ML");
         paintRepository.save(hRAFHemp);
         Paint hFerrariRed = new Paint(ManufacturerType.HUMBROL,"220","AA7227","Humbrol Gloss Ferrari Red",PaintType.ENAMEL,ColourType.RED,"C4151C","14ML");
         paintRepository.save(hFerrariRed);
@@ -121,7 +121,7 @@ public class DataLoader implements ApplicationRunner {
         paintRepository.save(fBrown);
         Paint tRedBrown = new Paint(ManufacturerType.TAMIYA,"XF-64","81365","Tamiya Red Brown",PaintType.ACRYLIC,ColourType.GREEN,"393227","50ML");
         paintRepository.save(tRedBrown);
-        Paint tBuff = new Paint(ManufacturerType.TAMIYA,"XF-57","81358","Tamiya Buff",PaintType.ENAMEL,ColourType.GREEN,"A79656","14ML");
+        Paint tBuff = new Paint(ManufacturerType.TAMIYA,"XF-57","81358","Tamiya Buff",PaintType.ENAMEL,ColourType.GREEN,"B6A690","14ML");
         paintRepository.save(tBuff);
         Paint tGoldLeaf = new Paint(ManufacturerType.TAMIYA,"X-12","81013","Tamiya Gold Leaf",PaintType.ACRYLIC,ColourType.YELLOW,"C5A971","50ML");
         paintRepository.save(tGoldLeaf);
