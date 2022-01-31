@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .cors()
-                .configurationSource(request -> new CorsConfiguration().setAllowedOriginPatterns(Arrays.asList("http://localhost:3000")))
+//                .configurationSource(request -> new CorsConfiguration().setAllowedOriginPatterns(Arrays.asList("http://localhost:3000")))
 //                .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .and()
                 .csrf().disable() // removes cross site request forgery, makes application lighter, could be added back in?
@@ -84,14 +84,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000/", "http://localhost:8443/"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000/"));
         configuration.setAllowedMethods(Arrays.asList("POST", "OPTIONS", "GET", "DELETE", "PUT"));
         configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization", "Access-Control-Allow-Origin"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/paints", configuration);
+        source.registerCorsConfiguration("/api/**", configuration);
 //        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
 //        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return source;

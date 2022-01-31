@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
 public class PaintController {
 
     @Autowired
@@ -24,6 +24,7 @@ public class PaintController {
     UserRepository userRepository;
 
     @GetMapping(value = "/paints", produces = "application/json")
+    @CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
     public ResponseEntity<List<Paint>> getPaints(
             @RequestParam(name="hex", required = false) String hexValue,
             @RequestParam(name="number", required = false) String number,
