@@ -66,7 +66,6 @@ function PaintConverterContainer() {
                 setErrorMsg('Something went wrong')
             }
         }
-
     }
 
     
@@ -108,7 +107,7 @@ function PaintConverterContainer() {
                 </div>
 
                 <div>
-                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} />
+                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} errorMessage={errorMsg} />
                 </div>
             </section>
         </>

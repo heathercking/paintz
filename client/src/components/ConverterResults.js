@@ -3,7 +3,7 @@ import React from 'react';
 import '../css/ConverterResults.css'
 
 
-const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches} ) => {
+const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches, errorMessage} ) => {
 
     if (!allExactMatches) {
         return null
@@ -34,70 +34,79 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
     }
 
 
-
-    return (
-        <>
-            <section className="converter-results">
-
-                <h2>Exact Matches</h2>
-                <div className="searched-section">
-                    <div className="container flex">
-                        {allExactMatches.map((paint, index) => {
-                            if (paint.manufacturer.toLowerCase() == manufacturer) {
-                                console.log(paint.manufacturer)
-                                console.log(paint.manufacturer.toLowerCase())
-                                return (
-                                    <div className="card" key={index}>
-                                        {paint.manufacturer} No. {paint.paintNum}
-                                    <div className="circle" >
-                                        {Circle(paint.hexValue)}
-                                    </div>
-                                    {paint.name}
-                                </div>
-                                )
-                            }})}
-                    </div>
-                </div>
-
-                <div id="exact-matches">
-                    <div className="container flex">
-                        {allExactMatches.map((paint, index) => {
-                            if (paint.manufacturer.toLowerCase() != manufacturer) {
-                                return (
-                                    <div className="card" key={index}>
-                                        {paint.manufacturer} No. {paint.paintNum}
-                                        <div className="circle">
-                                            {Circle(paint.hexValue)}
-                                        </div>
-                                        {paint.name}
-                                    </div>
-                                )
-                            }})}
-                    </div>
-                </div>
-
-                <h2>Closest Matches</h2>
-                    <div className="closest-matches">
+    if (errorMessage) {
+        return (
+            <>
+                <h1>Ooops, something went wrong!</h1>
+                <p>Give it another go...</p>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <section className="converter-results">
+    
+                    <h2>Exact Matches</h2>
+                    <div className="searched-section">
                         <div className="container flex">
-                            {allCloseMatches.map((paint, index) => {
-                                return (
-                                    <div className="card" key={index}>
-                                        {paint.manufacturer} No. {paint.paintNum}
-                                        <div className="circle">
+                            {allExactMatches.map((paint, index) => {
+                                if (paint.manufacturer.toLowerCase() == manufacturer) {
+                                    console.log(paint.manufacturer)
+                                    console.log(paint.manufacturer.toLowerCase())
+                                    return (
+                                        <div className="card" key={index}>
+                                            {paint.manufacturer} No. {paint.paintNum}
+                                        <div className="circle" >
                                             {Circle(paint.hexValue)}
                                         </div>
                                         {paint.name}
                                     </div>
-                                )
-                            })}
+                                    )
+                                }})}
                         </div>
                     </div>
+    
+                    <div id="exact-matches">
+                        <div className="container flex">
+                            {allExactMatches.map((paint, index) => {
+                                if (paint.manufacturer.toLowerCase() != manufacturer) {
+                                    return (
+                                        <div className="card" key={index}>
+                                            {paint.manufacturer} No. {paint.paintNum}
+                                            <div className="circle">
+                                                {Circle(paint.hexValue)}
+                                            </div>
+                                            {paint.name}
+                                        </div>
+                                    )
+                                }})}
+                        </div>
+                    </div>
+    
+                    <h2>Closest Matches</h2>
+                        <div className="closest-matches">
+                            <div className="container flex">
+                                {allCloseMatches.map((paint, index) => {
+                                    return (
+                                        <div className="card" key={index}>
+                                            {paint.manufacturer} No. {paint.paintNum}
+                                            <div className="circle">
+                                                {Circle(paint.hexValue)}
+                                            </div>
+                                            {paint.name}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+    
+    
+                </section>
+    
+            </>
+        )
+    }
 
-
-            </section>
-
-        </>
-    )
 }
 
 export default ConverterResults;
