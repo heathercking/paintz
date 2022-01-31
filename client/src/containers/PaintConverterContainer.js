@@ -11,6 +11,7 @@ function PaintConverterContainer() {
     const [exactMatches, setExactMatches] = useState([]);
     const [closestMatches, setClosestMatches] = useState([]);
     const [paints, setPaints] = useState([]);
+    const [errorMsg, setErrorMsg] = useState('');
 
 
     useEffect(() => {
@@ -38,13 +39,34 @@ function PaintConverterContainer() {
     }
 
     const getMatches = () => {
-        getExactMatches(searchNum, searchManu)
-        .then(data => {setExactMatches(data)})
+        try {
+            getExactMatches(searchNum, searchManu)
+            .then(data => {setExactMatches(data)})
+        } catch (error) {
+            if (!error?.response) {
+                setErrorMsg('No Server Response')
+            } else if (error.response?.status == 409) {
+                setErrorMsg('Cannot find that paint')
+            } else {
+                setErrorMsg('Something went wrong')
+            }
+        }
     }
 
     const getCloseMatches = () => {
-        getClosestMatches(searchNum, searchManu)
-        .then(data => {setClosestMatches(data)})
+        try {
+            getClosestMatches(searchNum, searchManu)
+            .then(data => {setClosestMatches(data)})
+        } catch (error) {
+            if (!error?.response) {
+                setErrorMsg('No Server Response')
+            } else if (error.response?.status == 409) {
+                setErrorMsg('Cannot find that paint')
+            } else {
+                setErrorMsg('Something went wrong')
+            }
+        }
+
     }
 
     
