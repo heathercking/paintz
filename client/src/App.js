@@ -13,6 +13,9 @@ import LoginContainer from './containers/LoginContainer';
 import UserInventoryContainer from './containers/UserInventoryContainer';
 import RegisterContainer from './containers/RegisterContainer';
 
+// const cors = require('cors');
+// app.use(cors());
+
 
 function App() {
   

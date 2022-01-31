@@ -63,9 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/api/users").hasRole("ADMIN")
-                .antMatchers("/api/admin").hasRole("ADMIN");
+                .antMatchers("/login").permitAll();
+//                .antMatchers("/api/users").hasRole("ADMIN")
+//                .antMatchers("/api/admin").hasRole("ADMIN");
 
 
 ////                .anyRequest().authenticated() // or .permitAll()
@@ -79,20 +79,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .httpBasic();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000/", "http://localhost:8443/"));
-        configuration.setAllowedMethods(Arrays.asList("POST", "OPTIONS", "GET", "DELETE", "PUT"));
-        configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization", "Access-Control-Allow-Origin"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/paints", configuration);
-//        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-//        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowCredentials(true);
+//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000/", "http://localhost:8443/"));
+//        configuration.setAllowedMethods(Arrays.asList("POST", "OPTIONS", "GET", "DELETE", "PUT"));
+//        configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization", "Access-Control-Allow-Origin"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/api/paints", configuration);
+////        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+////        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//        return source;
+//    }
 
 
 

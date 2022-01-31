@@ -39,6 +39,7 @@ public class PaintzServerApplication {
 		return tomcat;
 	}
 
+
 	/*
     We need to redirect from HTTP to HTTPS. Without SSL, this application used
     port 8080. With SSL it will use port 8443. So, any request for 8080 needs to be
