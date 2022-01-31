@@ -158,7 +158,7 @@ public class Paint {
             float greenDiff = (255 - Math.abs(green1 - green2)) / 255;
             float blueDiff = (255 - Math.abs(blue1 - blue2)) / 255;
 
-            if ((redDiff + greenDiff + blueDiff) / 3 >= 0.93) {
+            if ((redDiff + greenDiff + blueDiff) / 3 >= 0.93 && paintHex != this.hexValue) {
                 results.add(paint);
             }
         }
@@ -166,7 +166,6 @@ public class Paint {
     }
 
 }
-
 
 // originally had this in the above function, but working out a suitable cut-off point was challenging!
 //        int decimalOfThisHex = Integer.parseInt(this.hexValue, 16);
