@@ -40,6 +40,11 @@ function PaintConverterContainer() {
 
     const getMatches = () => {
         try {
+            // let finalSearchNum;
+            // if (searchNum < 10) {
+            //     finalSearchNum = parseInt("0" + searchNum)
+            //     console.log(`finalSearchNum =` + finalSearchNum);
+            // } 
             getExactMatches(searchNum, searchManu)
             .then(data => {setExactMatches(data)})
         } catch (error) {
@@ -55,15 +60,20 @@ function PaintConverterContainer() {
 
     const getCloseMatches = () => {
         try {
+            // let finalSearchNum;
+            // if (searchNum < 10) {
+            //     finalSearchNum = parseInt("0" + searchNum)
+            // } 
             getClosestMatches(searchNum, searchManu)
             .then(data => {setClosestMatches(data)})
         } catch (error) {
             if (!error?.response) {
-                setErrorMsg('No Server Response')
-            } else if (error.response?.status == 409) {
-                setErrorMsg('Cannot find that paint')
+                console.log(`error status =` + error.response)
+                setErrorMsg('Ooops, something went wrong!')
+            } else if (error.response?.status == 500) {
+                setErrorMsg("Sorry, we can't find that paint")
             } else {
-                setErrorMsg('Something went wrong')
+                setErrorMsg('Ooops, something went wrong!')
             }
         }
     }

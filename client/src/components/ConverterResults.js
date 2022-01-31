@@ -37,7 +37,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
     if (errorMessage) {
         return (
             <>
-                <h1>Ooops, something went wrong!</h1>
+                <h1>{errorMessage}</h1>
                 <p>Give it another go...</p>
             </>
         )

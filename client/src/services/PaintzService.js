@@ -22,22 +22,24 @@ export const getExactMatches = (number, manufacturer) => {
     let queryURL = baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer
     console.log(queryURL)
     return(
-        fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer), {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-        }    
+        fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
+        // {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json',
+        //     'Access-Control-Allow-Origin': '*',
+        // }    
         .then(res => res.json())
     )
 }
 
 export const getClosestMatches = (number, manufacturer) => {
     return(
-        fetch(baseURL + "paints/converter/equivalents" + "?number=" + number + "&manufacturer=" + manufacturer), {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-        }
+        fetch(baseURL + "paints/converter/equivalents" + "?number=" + number + "&manufacturer=" + manufacturer)
+        // {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json',
+        //     'Access-Control-Allow-Origin': '*',
+        // }
         .then(res => res.json())
     )
 }
