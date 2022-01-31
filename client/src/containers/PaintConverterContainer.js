@@ -32,6 +32,7 @@ function PaintConverterContainer() {
     }
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         getMatches();  
         getCloseMatches();
     }

@@ -19,6 +19,8 @@ export const getPaints = () => {
 }
 
 export const getExactMatches = (number, manufacturer) => {
+    let queryURL = baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer
+    console.log(queryURL)
     return(
         fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
         .then(res => res.json())
