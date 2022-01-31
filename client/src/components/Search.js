@@ -1,8 +1,9 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect, Component}  from 'react';
 import SearchResults from './SearchResults';
 
 
 function Search ({handleChange})  {
+
     const [searchTerm, setSearchTerm] = useState("");
   
     const changeSearchTerm = (event) => {

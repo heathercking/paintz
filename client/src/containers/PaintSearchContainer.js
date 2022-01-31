@@ -22,7 +22,10 @@ function PaintSearchContainer() {
     const filter = (searchTerm) => {
         const lowerSearch = searchTerm.toLowerCase();
         const filteredPaints = paints.filter((paint) => {
-          return paint.name.toLowerCase().indexOf(lowerSearch) > -1;
+          return (paint.name.toLowerCase().indexOf(lowerSearch) > -1 
+          || paint.hexValue.toLowerCase().indexOf(lowerSearch) > -1
+          || paint.paintNum.toLowerCase().indexOf(lowerSearch) > -1
+          || paint.modelNum.toLowerCase().indexOf(lowerSearch) > -1) 
         });
         setFilteredPaints(filteredPaints);
       }
