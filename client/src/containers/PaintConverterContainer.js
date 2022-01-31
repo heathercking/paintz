@@ -38,6 +38,7 @@ function PaintConverterContainer() {
         getCloseMatches();
     }
 
+
     const getMatches = () => {
         try {
             // let finalSearchNum;
@@ -90,6 +91,7 @@ function PaintConverterContainer() {
                 </div>
                 <div>
                     <form >
+                        <div>
                         <input 
                             onChange={handleNumChange}
                             type="text"
@@ -98,19 +100,32 @@ function PaintConverterContainer() {
                             placeholder="enter paint number"
                             value={searchNum} 
                             />
+                        </div>
+
+                        <div>
+                        {/* <label for="manufacturer">Select a brand:</label> */}
+                        <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
+                            <option className="placeholder" placeholder="Choose"></option>
+                            <option value="humbrol">Humbrol</option>
+                            <option value="revell">Revell</option>
+                            <option value="tamiya">Tamiya</option>
+                        </select>
+                        </div>
+
+
 
                         {/* <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
                         <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
                         <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button> */}
 
-                        <input 
+                        {/* <input 
                             onChange={handleManuChange}
                             type="text"
                             name="manu"
                             autoComplete="off"
                             placeholder="enter manufacturer"
                             value={searchManu} 
-                            />
+                            /> */}
 
                         <button onClick={handleSubmit} type="Submit">Convert!</button>
                     </form>
