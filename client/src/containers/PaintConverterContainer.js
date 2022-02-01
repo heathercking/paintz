@@ -66,8 +66,10 @@ function PaintConverterContainer() {
                 <div>
                     <form >
                         <div>
+                            <h1 className="paint-converter-heading">Paint Converter</h1>
+                            <h3 className="paint-converter-subheading">enter a paint number, select a brand, and go!</h3>
                             <div>
-                                <input 
+                                <input className="search-input-num"
                                     onChange={handleNumChange}
                                     type="text"
                                     name="number"
@@ -76,7 +78,7 @@ function PaintConverterContainer() {
                                     value={searchNum} 
                                     />
                                     
-                                <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
+                                <select className="search-input-brand" onChange={handleManuChange} name="manufacturer" id="manufacturer">
                                     <option className="placeholder" value="default">Choose a brand</option>
                                     <option value="humbrol">Humbrol</option>
                                     <option value="revell">Revell</option>
@@ -85,7 +87,7 @@ function PaintConverterContainer() {
                             </div>
                         </div>
 
-                        <button onClick={handleSubmit} type="Submit">Convert!</button>
+                        <button className="convert-button" onClick={handleSubmit} type="Submit">Convert!</button>
                     </form>
                 </div>
 

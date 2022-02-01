@@ -53,7 +53,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                        <div className="card" key={index}>
+                                    <div className="card" key={index}>
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}
