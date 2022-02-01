@@ -2,24 +2,30 @@ import React, {useState, useEffect, Component}  from 'react';
 import SearchResults from './SearchResults';
 
 
-function Search ({handleChange})  {
+function Search ({handleChange, handleSearchTerm, searchTerm})  {
 
-    const [searchTerm, setSearchTerm] = useState("");
-  
-    const changeSearchTerm = (event) => {
-      event.preventDefault();
-      setSearchTerm(event.target.value);
-    }
+    
+
   
     useEffect(() => {
       handleChange(searchTerm);
     }, [searchTerm]);
+
+
+    const changeSearchTerm = (event) => {
+        event.preventDefault();
+        handleSearchTerm(event.target.value);
+      }
+
+
+ 
   
     const handleSubmit = (event) => {
       event.preventDefault();
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
           <input
             onChange={changeSearchTerm}
@@ -28,6 +34,9 @@ function Search ({handleChange})  {
             placeholder="search paints.."
             value={searchTerm} />
         </form>
+
+        
+        </>
 
     );
 
