@@ -16,14 +16,12 @@ function PaintSearchContainer() {
         getPaints()
         .then((paints) => {
             setPaints(paints)
-            // setFilteredPaints(paints);
+            
         }); 
         filter(searchTerm);
     }, [chosenBrand])
 
-    // useEffect(() => {
-    //     handleBrandFilter();
-    // });
+
 
     
     const handleBrandFilter = (event) => {
@@ -38,16 +36,7 @@ function PaintSearchContainer() {
 
     const filter = (searchTerm) => {
         const lowerSearch = searchTerm.toLowerCase();
-        // let brandPaints = []
-        // if (chosenBrand != "default"){
-        //     for (let paint of paints){
-        //         if (paint.manufacturer == chosenBrand){
-        //             brandPaints.push(paint)
-        //         } 
-        //     }
-        // }else {
-        //     brandPaints = paints
-        // }
+
 
         const filteredPaints = paints.filter((paint) => {
             if (chosenBrand != "default"){
@@ -86,7 +75,6 @@ function PaintSearchContainer() {
             </div>
             <div>
                 {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>"Please begin typing to search"</p>}
-            {/* <SearchResults paints={filteredPaints}/> */}
             </div>
             
         </div>
