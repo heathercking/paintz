@@ -1,13 +1,48 @@
-import React from 'react';
+import React, {useState, useEffect, Component}  from 'react';
+import SearchResults from './SearchResults';
 
-const Search = () => {
 
+function Search ({handleChange, handleSearchTerm, searchTerm})  {
+
+    
+
+  
+    useEffect(() => {
+      handleChange(searchTerm);
+    }, [searchTerm]);
+
+
+    const changeSearchTerm = (event) => {
+        event.preventDefault();
+        handleSearchTerm(event.target.value);
+      }
+
+
+ 
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+    }
 
     return (
         <>
-            <h2>This is the paint search component</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={changeSearchTerm}
+            type="text"
+            name="searchTerm"
+            placeholder="search paints.."
+            value={searchTerm} />
+        </form>
+
+        
         </>
-    )
+
+    );
+
+
+
 }
+
 
 export default Search;

@@ -1,12 +1,20 @@
 import React from 'react';
+import SearchResultsItem from './SearchResultsItem';
 
-const SearchResults = () => {
 
+const SearchResults = ({paints}) => {
+
+    const paintsItems = paints.map((paint, index) => {
+        return <SearchResultsItem paint={paint} key={index} />
+    })
+    
 
     return (
-        <>
-            <h2>This is the search results component</h2>
-        </>
+        <div>
+            <p>
+                {paintsItems}
+            </p>
+        </div>
     )
 }
 

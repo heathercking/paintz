@@ -1,11 +1,12 @@
 import React from 'react';
 
-const SearchResultsItem = () => {
+const SearchResultsItem = ({paint}) => {
 
 
     return (
         <>
-            <h2>This is the search results item component</h2>
+            <a className="paintItem">{paint.paintNum} - {paint.name}</a>
+            <br></br>
         </>
     )
 }
