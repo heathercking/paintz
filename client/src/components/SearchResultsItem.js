@@ -22,14 +22,13 @@ const SearchResultsItem = ({paint}) => {
 
     return (
         <>
-                        <div className="card">
-                            {paint.manufacturer} No. {paint.paintNum}
-                            <div className="circle" >
-                                {Circle(paint.hexValue)}
-                            </div>
-                            {paint.name}
-                        </div>
-            {/* <a className="paintItem">{paint.paintNum} - {paint.name}</a> */}
+            <div className="card">
+                {paint.manufacturer} No. {paint.paintNum}
+                <div className="circle" >
+                    {Circle(paint.hexValue)}
+                </div>
+                {paint.name}
+            </div>
         </>
     )
 }
