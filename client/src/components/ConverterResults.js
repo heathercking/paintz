@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../css/ConverterResults.css'
+import PaintDetail from './PaintDetail';
 
 
 const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
+
+    const [openPaintDetailModal, setOpenPaintDetailModal] = useState(false);
 
     if (!allExactMatches) {
         return null
     }
 
+    
     console.log(allPaints);
     console.log(allExactMatches);
     console.log(allCloseMatches);
@@ -16,6 +20,10 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
     const handlePaintClick = (event) => {
         paintSelector(event.target.value);
       }
+
+    const setModal = () => {
+        setOpenPaintDetailModal(true);
+    }
 
 
     const Circle = (colour) => {
@@ -56,14 +64,17 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                    <div onClick={handlePaintClick} value={paint} className="card" key={index}>
+                                    <div onClick={() => {setOpenPaintDetailModal(true)}}  value={paint} className="card" key={index}>
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}
                                         </div>
                                         {paint.name}
+                                        {openPaintDetailModal && <PaintDetail setOpenModal={setOpenPaintDetailModal} chosenPaint={paint} />}
                                     </div>
+                                    
                                     )
+                                    
                                 }})}
                         </div>
                     </div>

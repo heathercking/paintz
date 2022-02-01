@@ -57,7 +57,7 @@ function PaintConverterContainer() {
         .then(data => {setClosestMatches(data)})
     }
 
-    const onPaintSelected = function(paint){
+    const onPaintSelected = (paint) =>{
         setSelectedPaint(paint);
     }
 
