@@ -100,6 +100,11 @@ public class PaintTest {
         assertEquals(6, found.size());
     }
 
+    @Test
+    public void canAddPaintToUserInventory() {
+        
+    }
+
 
 
 }

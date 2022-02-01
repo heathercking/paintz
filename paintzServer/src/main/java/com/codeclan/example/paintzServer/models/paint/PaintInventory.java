@@ -18,4 +18,8 @@ public class PaintInventory {
     public void setUserInventory(List<Paint> userInventory) {
         this.userInventory = userInventory;
     }
+
+    public void addPaintToInventory(Paint paint) {
+        this.userInventory.add(paint);
+    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/PaintDetail.css'
 
 
-const PaintDetail = ( {chosenPaint}) => {
+const PaintDetail = ( {chosenPaint, setOpenModal}) => {
 
     if (!chosenPaint) {
         return null
@@ -13,18 +13,23 @@ const PaintDetail = ( {chosenPaint}) => {
     // let number = selectedPaint.paintNum;
     // console.log(number)
 
-    let name = chosenPaint.name;
+    // let name = chosenPaint.name;
 
     return(
         <>
             <div className="paint-modal">
                 <div className="paint-modal-content">
                     <div className="paint-modal-header">
-                        <h1 className="paint-modal-title">I am the paint details pop-up</h1>
+                        <h1 className="paint-modal-title">{chosenPaint.name}</h1>
                         <div className="paint-modal-body">
-                            <p>{name}</p>
+                            <p>Paint Number: {chosenPaint.paintNum}</p>
+                            <p>Model Number: {chosenPaint.modelNum}</p>
+                            <p>Manufacturer: {chosenPaint.manufacturer}</p>
+                            <p>Paint Type: {chosenPaint.paintType}</p>
+                            <p>Size: {chosenPaint.size}</p>
                         </div>
                         <div className="paint-modal-footer">
+                            <button type="submit" onClick={() => {setOpenModal(false);}}>Close</button>
                         </div>
                     </div>
                 </div>

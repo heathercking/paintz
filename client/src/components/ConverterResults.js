@@ -64,15 +64,14 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                    <div onClick={() => {setOpenPaintDetailModal(true)}}  value={paint} className="card" key={index}>
+                                        <div onClick={() => {setOpenPaintDetailModal(true);}}  value={paint} className="card" key={index}>
+                                            {openPaintDetailModal && <PaintDetail setOpenModal={setOpenPaintDetailModal} chosenPaint={paint} />}
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}
                                         </div>
                                         {paint.name}
-                                        {openPaintDetailModal && <PaintDetail setOpenModal={setOpenPaintDetailModal} chosenPaint={paint} />}
                                     </div>
-                                    
                                     )
                                     
                                 }})}
