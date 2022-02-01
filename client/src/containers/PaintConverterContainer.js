@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { getPaints, getExactMatches, getClosestMatches } from '../services/PaintzService';
 import ConverterResults from "../components/ConverterResults";
 import '../css/PaintConverter.css'
+import PaintDetail from "../components/PaintDetail";
 
 
 function PaintConverterContainer() {
@@ -14,6 +15,7 @@ function PaintConverterContainer() {
     const [errorMsg, setErrorMsg] = useState('');
     const [exactMatchesResponse, setExactMatchesResponse] = useState(null);
     const [closeMatchesResponse, setCloseMatchesResponse] = useState(null);
+    const [selectedPaint, setSelectedPaint] = useState(null);
 
 
     useEffect(() => {
@@ -55,7 +57,10 @@ function PaintConverterContainer() {
         .then(data => {setClosestMatches(data)})
     }
 
-    
+    const onPaintSelected = function(paint){
+        setSelectedPaint(paint);
+    }
+
 
     return (
         <>
@@ -92,7 +97,8 @@ function PaintConverterContainer() {
                 </div>
 
                 <div>
-                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} exactMatchesResp={exactMatchesResponse} closeMatchesResp={closeMatchesResponse}/>
+                    <ConverterResults allPaints={paints} paintSelector={onPaintSelected} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} exactMatchesResp={exactMatchesResponse} closeMatchesResp={closeMatchesResponse}/>
+                    <PaintDetail selectedPaint={selectedPaint} />
                 </div>
             </section>
         </>

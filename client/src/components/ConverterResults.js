@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/ConverterResults.css'
 
 
-const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
+const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
 
     if (!allExactMatches) {
         return null
@@ -12,6 +12,10 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
     console.log(allExactMatches);
     console.log(allCloseMatches);
     console.log(`manu = ` + manufacturer);
+
+    const handlePaintClick = (event) => {
+        paintSelector(event.target.value);
+      }
 
 
     const Circle = (colour) => {
@@ -52,7 +56,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                    <div className="card" key={index}>
+                                    <div onClick={handlePaintClick} value={paint} className="card" key={index}>
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}
@@ -69,7 +73,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                             {allExactMatches.map((paint, index) => {
                                 if (paint.manufacturer.toLowerCase() != manufacturer) {
                                     return (
-                                        <div className="card" key={index}>
+                                        <div onClick={handlePaintClick} className="card" key={index}>
                                             {paint.manufacturer} No. {paint.paintNum}
                                             <div className="circle">
                                                 {Circle(paint.hexValue)}
