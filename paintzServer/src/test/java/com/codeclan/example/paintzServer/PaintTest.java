@@ -4,6 +4,7 @@ import com.codeclan.example.paintzServer.models.enums.ColourType;
 import com.codeclan.example.paintzServer.models.enums.ManufacturerType;
 import com.codeclan.example.paintzServer.models.enums.PaintType;
 import com.codeclan.example.paintzServer.models.paint.Paint;
+import com.codeclan.example.paintzServer.models.paint.PaintInventory;
 import com.codeclan.example.paintzServer.repositories.PaintRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
@@ -22,6 +23,7 @@ public class PaintTest {
 
     @Autowired
     PaintRepository paintRepository;
+
 
     @Test
     public void canSavePaintToDB() {
@@ -102,9 +104,10 @@ public class PaintTest {
 
     @Test
     public void canAddPaintToUserInventory() {
-        
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "A79656", "14ML");
+        PaintInventory inventory = new PaintInventory();
+        inventory.addPaintToInventory(paint1);
+        assertEquals(1, inventory.getUserInventory().size());
     }
-
-
 
 }
