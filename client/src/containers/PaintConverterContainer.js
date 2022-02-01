@@ -43,6 +43,7 @@ function PaintConverterContainer() {
 
     const getMatches = () => {
         getExactMatches(searchNum, searchManu)
+        .then(res => res.json())
         // .then(response => setExactMatchesResponse(response.status))
         .then(data => {setExactMatches(data)})
         // .then(data => console.log(data))
@@ -51,6 +52,7 @@ function PaintConverterContainer() {
 
     const getCloseMatches = () => {
         getClosestMatches(searchNum, searchManu)
+        .then(res => res.json())
         // .then(response => setCloseMatchesResponse(response.status))
         .then(data => {setClosestMatches(data)})
     }

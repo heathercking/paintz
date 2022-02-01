@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from '../services/Axios';
+import '../css/LoginContainer.css'
 
 const LOGIN_URL = '/login';
 
@@ -44,35 +45,46 @@ function LoginContainer() {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Sign in to your account</h1>
-                <p>Don't have an acocunt? Register here</p>
-                <div>
-                    <label htmlFor="username">Email:</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="email"
-                        autoComplete="off"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                        required />
+        <div className="map-modal">
+            <div className="map-modal-content">
+                <div className="map-modal-header">
+
+                    <form onSubmit={handleSubmit}>
+                        <h1 className="map-modal-title">Sign in to your account</h1>
+                        
+                        <div className="map-modal-body">
+                            <div>
+                                <label htmlFor="username">Email:</label>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    name="username" 
+                                    placeholder="email"
+                                    autoComplete="off"
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={username}
+                                    required />
+                            </div>
+                            <div>
+                                <label htmlFor="password">Password:</label>
+                                <input 
+                                    type="text" 
+                                    id="password" 
+                                    name="password" 
+                                    placeholder="password" 
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
+                                    required />
+                            </div>
+                            <button type="submit">Submit</button>
+                        </div>
+                        <div className="map-modal-footer">
+                                <p>Don't have an acocunt?</p>
+                                <button type="">Register here</button>
+                            </div>
+                    </form>
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input 
-                        type="text" 
-                        id="password" 
-                        name="password" 
-                        placeholder="password" 
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                        required />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+            </div>
         </div>
     )
 }

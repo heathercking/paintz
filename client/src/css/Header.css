@@ -48,6 +48,6 @@
 
   .nav-bar a:hover {
     cursor: pointer;
-    border-bottom: 2px var(--primary-bright) solid;
+    border-bottom: 2px white solid;
     color: var(--primary-bright);
 }
