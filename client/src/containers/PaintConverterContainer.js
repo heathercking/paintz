@@ -62,7 +62,6 @@ function PaintConverterContainer() {
             <section className="paint-converter">
             
                 <div>
-                   Enter some instruction here....
                 </div>
                 <div>
                     <form >
