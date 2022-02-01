@@ -3,7 +3,7 @@ import React from 'react';
 import '../css/ConverterResults.css'
 
 
-const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches, errorMessage} ) => {
+const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
 
     if (!allExactMatches) {
         return null
@@ -16,7 +16,6 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
 
 
     const Circle = (colour) => {
-        // let colour = ""
 
         var circleStyle = {
             padding:5,
@@ -34,10 +33,10 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
     }
 
 
-    if (errorMessage) {
+    if (exactMatchesResp != null) {
         return (
             <>
-                <h1>{errorMessage}</h1>
+                <h1>{exactMatchesResp}</h1>
                 <p>Give it another go...</p>
             </>
         )

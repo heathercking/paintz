@@ -12,6 +12,8 @@ function PaintConverterContainer() {
     const [closestMatches, setClosestMatches] = useState([]);
     const [paints, setPaints] = useState([]);
     const [errorMsg, setErrorMsg] = useState('');
+    const [exactMatchesResponse, setExactMatchesResponse] = useState(null);
+    const [closeMatchesResponse, setCloseMatchesResponse] = useState(null);
 
 
     useEffect(() => {
@@ -40,47 +42,20 @@ function PaintConverterContainer() {
 
 
     const getMatches = () => {
-        try {
-            // let finalSearchNum;
-            // if (searchNum < 10) {
-            //     finalSearchNum = parseInt("0" + searchNum)
-            //     console.log(`finalSearchNum =` + finalSearchNum);
-            // } 
-            getExactMatches(searchNum, searchManu)
-            .then(data => {setExactMatches(data)})
-        } catch (error) {
-            if (!error?.response) {
-                setErrorMsg('No Server Response')
-            } else if (error.response?.status == 409) {
-                setErrorMsg('Cannot find that paint')
-            } else {
-                setErrorMsg('Something went wrong')
-            }
-        }
+        getExactMatches(searchNum, searchManu)
+        // .then(response => setExactMatchesResponse(response.status))
+        .then(data => {setExactMatches(data)})
+        // .then(data => console.log(data))
+        // .then(data => {setExactMatches(data)})
     }
 
     const getCloseMatches = () => {
-        try {
-            // let finalSearchNum;
-            // if (searchNum < 10) {
-            //     finalSearchNum = parseInt("0" + searchNum)
-            // } 
-            getClosestMatches(searchNum, searchManu)
-            .then(data => {setClosestMatches(data)})
-        } catch (error) {
-            if (!error?.response) {
-                console.log(`error status =` + error.response)
-                setErrorMsg('Ooops, something went wrong!')
-            } else if (error.response?.status == 500) {
-                setErrorMsg("Sorry, we can't find that paint")
-            } else {
-                setErrorMsg('Ooops, something went wrong!')
-            }
-        }
+        getClosestMatches(searchNum, searchManu)
+        // .then(response => setCloseMatchesResponse(response.status))
+        .then(data => {setClosestMatches(data)})
     }
 
     
-
 
     return (
         <>
@@ -93,49 +68,30 @@ function PaintConverterContainer() {
                     <form >
                         <div>
                             <div>
-                            <input 
-                                onChange={handleNumChange}
-                                type="text"
-                                name="number"
-                                autoComplete="off"
-                                placeholder="enter paint number"
-                                value={searchNum} 
-                                />
-                            {/* </div> */}
-
-                            {/* <div> */}
-                            {/* <label for="manufacturer">Select a brand:</label> */}
-                            <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
-                                <option className="placeholder" placeholder="Choose"></option>
-                                <option value="humbrol">Humbrol</option>
-                                <option value="revell">Revell</option>
-                                <option value="tamiya">Tamiya</option>
-                            </select>
+                                <input 
+                                    onChange={handleNumChange}
+                                    type="text"
+                                    name="number"
+                                    autoComplete="off"
+                                    placeholder="enter paint number"
+                                    value={searchNum} 
+                                    />
+                                    
+                                <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
+                                    <option className="placeholder" value="default">Choose a brand</option>
+                                    <option value="humbrol">Humbrol</option>
+                                    <option value="revell">Revell</option>
+                                    <option value="tamiya">Tamiya</option>
+                                </select>
                             </div>
                         </div>
-
-
-
-
-                        {/* <button onClick={handleSubmit} type="Submit" id="HUMBROL">Humbrol</button>
-                        <button onClick={handleSubmit} type="Submit" id="REVELL">Revell</button>
-                        <button onClick={handleSubmit} type="Submit" id="TAMIYA">Tamiya</button> */}
-
-                        {/* <input 
-                            onChange={handleManuChange}
-                            type="text"
-                            name="manu"
-                            autoComplete="off"
-                            placeholder="enter manufacturer"
-                            value={searchManu} 
-                            /> */}
 
                         <button onClick={handleSubmit} type="Submit">Convert!</button>
                     </form>
                 </div>
 
                 <div>
-                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} errorMessage={errorMsg} />
+                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} exactMatchesResp={exactMatchesResponse} closeMatchesResp={closeMatchesResponse}/>
                 </div>
             </section>
         </>
@@ -143,28 +99,3 @@ function PaintConverterContainer() {
 }
 
 export default PaintConverterContainer;
-
-
-
-    // const handleChange = (event) => {
-    //     event.preventDefault();
-    //     setSearchNum(event.target.value);
-    //     console.log(searchNum);
-    //     setSearchManu(event.target.id);
-    //     console.log(event.target.id);
-    //     setSearchResults(getEquivalentPaints(searchNum, searchManu));
-    // }
-
-
-    // const handleSubmit = () => {
-    //     setSearchResults(getEquivalentPaints(searchNum, searchManu))
-    //     .then(console.log(searchResults));
-    // }
-
-    // console.log(searchResults);
-
-
-    // if (searchNum && searchManu) {
-    //     var results = getEquivalentPaints(searchNum, searchManu);
-    //     setSearchResults(results);
-    // }
