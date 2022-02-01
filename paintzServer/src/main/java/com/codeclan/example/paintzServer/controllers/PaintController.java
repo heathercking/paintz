@@ -38,6 +38,46 @@ public class PaintController {
 
     }
 
+    @GetMapping(value = "paints/converter")
+    public ResponseEntity<List<Paint>> getConvertedPaints(
+            @RequestParam(name="number", required = true) String number,
+            @RequestParam(name="manufacturer", required = true) String manufacturer
+    ) {
+        if (number != null && manufacturer != null) {
+            String upperManufacturer = manufacturer.toUpperCase();
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(upperManufacturer));
+            String hexValue = found.getHexValue();
+            List<Paint> payload = paintRepository.findPaintsByHexValue(hexValue);
+            if (payload.size() > 0) {
+                return new ResponseEntity<>(payload, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+    @GetMapping(value = "paints/converter/equivalents")
+    public ResponseEntity<List<Paint>> getClosestMatches(
+            @RequestParam(name="number", required = true) String number,
+            @RequestParam(name="manufacturer", required = true) String manufacturer
+    ) {
+        if (number != null && manufacturer != null) {
+            String upperManufacturer = manufacturer.toUpperCase();
+            Paint found = paintRepository.findPaintByPaintNumAndManufacturer(number, ManufacturerType.valueOf(upperManufacturer));
+            List<Paint> payload = found.findClosestMatches(paintRepository.findAll());
+            if (payload.size() > 0) {
+                return new ResponseEntity<>(payload, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 
 }

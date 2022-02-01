@@ -57,6 +57,49 @@ public class PaintTest {
         assertEquals(3, found.size());
     }
 
+    @Test
+    public void canFindPaintByNumberAndManufacturer() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
+        paintRepository.save(paint1);
+
+        Paint found = paintRepository.findPaintByPaintNumAndManufacturer("211", ManufacturerType.HUMBROL);
+        String resultNum = found.getPaintNum();
+        String resultHex = found.getHexValue();
+        assertEquals("211", resultNum);
+        assertEquals("005B40", resultHex);
+    }
+
+    @Test
+    public void canFindMultiplePaintsByHexValue() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "005B40", "14ML");
+        paintRepository.save(paint1);
+
+        Paint lookup = paintRepository.findPaintByPaintNumAndManufacturer("211", ManufacturerType.HUMBROL);
+        List<Paint> found = paintRepository.findPaintsByHexValue(lookup.getHexValue());
+        assertEquals(4, found.size());
+
+    }
+
+    @Test
+    public void canFindPaintsWithSameHexValues() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "A79656", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> allPaints = paintRepository.findAll();
+        List<Paint> found = paint1.findMatchesByHex(allPaints);
+        assertEquals(6, found.size());
+    }
+
+    @Test
+    public void canFindPaintsWithSimilarHexValues() {
+        Paint paint1 = new Paint(ManufacturerType.HUMBROL, "211", "AA0028", "Test Paint", PaintType.ENAMEL, ColourType.GREEN, "A79656", "14ML");
+        paintRepository.save(paint1);
+
+        List<Paint> allPaints = paintRepository.findAll();
+        List<Paint> found = paint1.findClosestMatches(allPaints);
+        assertEquals(6, found.size());
+    }
+
 
 
 }

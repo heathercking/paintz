@@ -10,10 +10,15 @@ const PaintzContainer = () => {
 
     return (
         <>
-            <h1>Paintz!</h1>
+        <div className="welcome-page">
+        <h1 className="main-logo">Paintz!</h1>
             <h2>the model paint app</h2>
 
-            <button type="">Enter</button>
+
+            <button type="">Sign In</button>
+            <button type="">Enter As Guest</button>   
+        </div>
+
         </>
     )
 }

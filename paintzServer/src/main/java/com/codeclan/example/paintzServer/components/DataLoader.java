@@ -21,7 +21,7 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Paint hEmeraldGreen = new Paint(ManufacturerType.HUMBROL," 02","AA0175","Humbrol Gloss Emerald Green",PaintType.ENAMEL,ColourType.GREEN,"005B40","14ML");
+        Paint hEmeraldGreen = new Paint(ManufacturerType.HUMBROL,"02","AA0175","Humbrol Gloss Emerald Green",PaintType.ENAMEL,ColourType.GREEN,"005B40","14ML");
         paintRepository.save(hEmeraldGreen);
         Paint hSilver = new Paint(ManufacturerType.HUMBROL,"11","AA0176","Humbrol Metal Silver",PaintType.ENAMEL,ColourType.GREY,"9B9D9F","14ML");
         paintRepository.save(hSilver);

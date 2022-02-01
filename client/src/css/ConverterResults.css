@@ -1,0 +1,44 @@
+.converter-results {
+    min-height: 70vh;
+    text-align: center;
+    /* background-color: black; */
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 5px;
+    margin: 10px;
+    min-width: 160px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 10px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.searched-section .flex {
+    flex-wrap: wrap;
+}
+
+.circle {
+    margin: 0;
+    padding: 0;
+}
