@@ -9,8 +9,8 @@ function PaintConverterContainer() {
 
     const [searchNum, setSearchNum] = useState("");
     const [searchManu, setSearchManu] = useState("");
-    const [exactMatches, setExactMatches] = useState([]);
-    const [closestMatches, setClosestMatches] = useState([]);
+    const [exactMatches, setExactMatches] = useState(null);
+    const [closestMatches, setClosestMatches] = useState(null);
     const [paints, setPaints] = useState([]);
     const [errorMsg, setErrorMsg] = useState('');
     const [exactMatchesResponse, setExactMatchesResponse] = useState(null);
@@ -45,15 +45,29 @@ function PaintConverterContainer() {
 
     const getMatches = () => {
         getExactMatches(searchNum, searchManu)
+        .then(result => {
+            console.log("results:", result);
+            setExactMatches(result);
+        })
+        
+        
+        //.then(response => (console.log(response.status)))
         // .then(response => setExactMatchesResponse(response.status))
-        .then(data => {setExactMatches(data)})
+        // .then(data => {setExactMatches(data)})
         // .then(data => console.log(data))
     }
 
     const getCloseMatches = () => {
         getClosestMatches(searchNum, searchManu)
+        .then(result => {
+            console.log("close results:", result);
+            setClosestMatches(result);
+        })
+
+
+        // .then(response => (console.log(response.status)))
         // .then(response => setCloseMatchesResponse(response.status))
-        .then(data => {setClosestMatches(data)})
+        // .then(data => {setClosestMatches(data)})
     }
 
     const onPaintSelected = (paint) =>{
