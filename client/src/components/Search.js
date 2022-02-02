@@ -1,5 +1,4 @@
-import React, {useState, useEffect, Component}  from 'react';
-import SearchResults from './SearchResults';
+import React, {useEffect}  from 'react';
 
 
 function Search ({handleChange, handleSearchTerm, searchTerm})  {
@@ -32,7 +31,8 @@ function Search ({handleChange, handleSearchTerm, searchTerm})  {
             type="text"
             name="searchTerm"
             placeholder="search paints.."
-            value={searchTerm} />
+            value={searchTerm} 
+            autoComplete="off" />
         </form>
 
         
