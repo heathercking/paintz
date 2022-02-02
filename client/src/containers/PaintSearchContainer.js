@@ -45,9 +45,16 @@ function PaintSearchContainer() {
 
     }
 
+    const handleSearchReset = () => {
+        setSearchTerm("");
+        setChosenBrand("default");
+        setChosenColour("default");
+        setChosenPaintType("default");
+    }
+
+    // massive filter function!
     const filter = (searchTerm) => {
         const lowerSearch = searchTerm.toLowerCase();
-
 
         const filteredPaints = paints.filter((paint) => {
             if(chosenBrand != "default" && chosenColour != "default" && chosenPaintType != "default"){
@@ -150,6 +157,9 @@ function PaintSearchContainer() {
                     :
                     ""
                 }
+            </div>
+            <div>
+                {filteredPaints.length > 0 ? <button onClick={handleSearchReset} type="submit">Reset</button> : ""}
             </div>
             <div>
                 {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>begin typing to search...</p>}
