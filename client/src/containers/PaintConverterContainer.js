@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { getPaints, getExactMatches, getClosestMatches } from '../services/PaintzService';
 import ConverterResults from "../components/ConverterResults";
 import '../css/PaintConverter.css'
+import PaintDetail from "../components/PaintDetail";
 
 
 function PaintConverterContainer() {
@@ -14,6 +15,7 @@ function PaintConverterContainer() {
     const [errorMsg, setErrorMsg] = useState('');
     const [exactMatchesResponse, setExactMatchesResponse] = useState(null);
     const [closeMatchesResponse, setCloseMatchesResponse] = useState(null);
+    const [selectedPaint, setSelectedPaint] = useState(null);
 
 
     useEffect(() => {
@@ -46,7 +48,6 @@ function PaintConverterContainer() {
         // .then(response => setExactMatchesResponse(response.status))
         .then(data => {setExactMatches(data)})
         // .then(data => console.log(data))
-        // .then(data => {setExactMatches(data)})
     }
 
     const getCloseMatches = () => {
@@ -55,7 +56,10 @@ function PaintConverterContainer() {
         .then(data => {setClosestMatches(data)})
     }
 
-    
+    const onPaintSelected = (paint) =>{
+        setSelectedPaint(paint);
+    }
+
 
     return (
         <>
@@ -66,8 +70,10 @@ function PaintConverterContainer() {
                 <div>
                     <form >
                         <div>
+                            <h1 className="paint-converter-heading">Paint Converter</h1>
+                            <h3 className="paint-converter-subheading">enter a paint number, select a brand, and go!</h3>
                             <div>
-                                <input 
+                                <input className="search-input-num"
                                     onChange={handleNumChange}
                                     type="text"
                                     name="number"
@@ -76,7 +82,7 @@ function PaintConverterContainer() {
                                     value={searchNum} 
                                     />
                                     
-                                <select onChange={handleManuChange} name="manufacturer" id="manufacturer">
+                                <select className="search-input-brand" onChange={handleManuChange} name="manufacturer" id="manufacturer">
                                     <option className="placeholder" value="default">Choose a brand</option>
                                     <option value="humbrol">Humbrol</option>
                                     <option value="revell">Revell</option>
@@ -85,12 +91,13 @@ function PaintConverterContainer() {
                             </div>
                         </div>
 
-                        <button onClick={handleSubmit} type="Submit">Convert!</button>
+                        <button className="convert-button" onClick={handleSubmit} type="Submit">Convert!</button>
                     </form>
                 </div>
 
                 <div>
-                    <ConverterResults allPaints={paints} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} exactMatchesResp={exactMatchesResponse} closeMatchesResp={closeMatchesResponse}/>
+                    <ConverterResults allPaints={paints} paintSelector={onPaintSelected} manufacturer={searchManu} allExactMatches={exactMatches} allCloseMatches={closestMatches} exactMatchesResp={exactMatchesResponse} closeMatchesResp={closeMatchesResponse}/>
+                    <PaintDetail selectedPaint={selectedPaint} />
                 </div>
             </section>
         </>

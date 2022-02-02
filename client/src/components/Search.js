@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Component}  from 'react';
 import SearchResults from './SearchResults';
+import '../css/Search.css';
 
 
 function Search ({handleChange, handleSearchTerm, searchTerm})  {
@@ -27,7 +28,7 @@ function Search ({handleChange, handleSearchTerm, searchTerm})  {
     return (
         <>
         <form onSubmit={handleSubmit}>
-          <input
+          <input className="search-input"
             onChange={changeSearchTerm}
             type="text"
             name="searchTerm"
