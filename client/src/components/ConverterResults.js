@@ -45,19 +45,15 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
           );
     }
 
-
-    if (exactMatchesResp != null) {
-        return (
-            <>
-                <h1>{exactMatchesResp}</h1>
-                <p>Give it another go...</p>
-            </>
-        )
+                    {/* <h1>{exactMatchesResp}</h1>
+                <p>Give it another go...</p> */}
+    
+    if (allExactMatches.length === 0) {
+        return null
     } else {
         return (
             <>
                 <section className="converter-results">
-    
                     <h2>Exact Matches</h2>
                     <div className="searched-section">
                         <div className="container flex">
@@ -96,7 +92,7 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
                                 }})}
                         </div>
                     </div>
-    
+
                     <h2>Closest Matches</h2>
                         <div className="closest-matches">
                             <div className="container flex">
@@ -113,13 +109,13 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
                                 })}
                             </div>
                         </div>
-    
-    
                 </section>
-    
             </>
         )
     }
+
+
+
 
 }
 
