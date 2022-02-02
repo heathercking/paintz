@@ -1,0 +1,15 @@
+.paint-search {
+    min-height: 70vh;
+    text-align: center;
+}
+
+.search-input {
+    padding: 9px;
+    margin: 5px 0px;
+    border: 0.5px grey solid;
+    border-radius: 5px;
+}
+
+.paint-search-heading {
+    margin: 20px 0px 5px 0px;
+}

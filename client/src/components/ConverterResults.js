@@ -1,20 +1,33 @@
-import React from 'react';
-// import Circle from './Circle';
+import React, {useState} from 'react';
 import '../css/ConverterResults.css'
+import PaintDetail from './PaintDetail';
 
 
-const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
+const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatches, allCloseMatches, exactMatchesResp, closeMatchesResp} ) => {
+
+    const [openPaintDetailModal, setOpenPaintDetailModal] = useState(false);
 
     if (!allExactMatches) {
         return null
     }
 
+    
     console.log(allPaints);
     console.log(allExactMatches);
     console.log(allCloseMatches);
     console.log(`manu = ` + manufacturer);
 
+    const handlePaintClick = (event) => {
+        paintSelector(event.target.value);
+      }
 
+    const toggleModal = () => {
+        setOpenPaintDetailModal(!openPaintDetailModal);
+    }
+
+
+    // took this from an example class online
+    // nicked the relevant bit to put in here as a method, and set colour to a variable
     const Circle = (colour) => {
 
         var circleStyle = {
@@ -32,19 +45,22 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
           );
     }
 
-
-    if (exactMatchesResp != null) {
-        return (
-            <>
-                <h1>{exactMatchesResp}</h1>
-                <p>Give it another go...</p>
-            </>
-        )
-    } else {
+                    {/* <h1>{exactMatchesResp}</h1>
+                <p>Give it another go...</p> */}
+    
+    console.log("allExactMatches", allExactMatches)
+    console.log("allCloseMatches", allCloseMatches)
+    // if (allExactMatches != 200) {
+    //     return (
+    //         <>
+    //         <h3>No Matches Found!</h3>
+    //         </>
+    //     )
+    // } else {}
+     if (allExactMatches != null && Array.isArray(allExactMatches) == true && allCloseMatches != null && Array.isArray(allCloseMatches) == true) {
         return (
             <>
                 <section className="converter-results">
-    
                     <h2>Exact Matches</h2>
                     <div className="searched-section">
                         <div className="container flex">
@@ -53,7 +69,8 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                        <div className="card" key={index}>
+                                        <div onClick={toggleModal} value={paint} className="card" key={index}>
+                                            {openPaintDetailModal && <PaintDetail closeModal={toggleModal} chosenPaint={paint} />}
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}
@@ -61,6 +78,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                         {paint.name}
                                     </div>
                                     )
+                                    
                                 }})}
                         </div>
                     </div>
@@ -70,7 +88,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                             {allExactMatches.map((paint, index) => {
                                 if (paint.manufacturer.toLowerCase() != manufacturer) {
                                     return (
-                                        <div className="card" key={index}>
+                                        <div onClick={handlePaintClick} className="card" key={index}>
                                             {paint.manufacturer} No. {paint.paintNum}
                                             <div className="circle">
                                                 {Circle(paint.hexValue)}
@@ -81,7 +99,7 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                 }})}
                         </div>
                     </div>
-    
+
                     <h2>Closest Matches</h2>
                         <div className="closest-matches">
                             <div className="container flex">
@@ -98,14 +116,70 @@ const ConverterResults = ( {allPaints, manufacturer, allExactMatches, allCloseMa
                                 })}
                             </div>
                         </div>
-    
-    
                 </section>
+            </>
+        )
+    } else if (allExactMatches != null && Array.isArray(allExactMatches) == true && allCloseMatches != null && Array.isArray(allCloseMatches) == false){
+        return (
+            <>
+                <section className="converter-results">
+                    <h2>Exact Matches</h2>
+                    <div className="searched-section">
+                        <div className="container flex">
+                            {allExactMatches.map((paint, index) => {
+                                if (paint.manufacturer.toLowerCase() == manufacturer) {
+                                    console.log(paint.manufacturer)
+                                    console.log(paint.manufacturer.toLowerCase())
+                                    return (
+                                        <div onClick={toggleModal} value={paint} className="card" key={index}>
+                                            {openPaintDetailModal && <PaintDetail closeModal={toggleModal} chosenPaint={paint} />}
+                                            {paint.manufacturer} No. {paint.paintNum}
+                                        <div className="circle" >
+                                            {Circle(paint.hexValue)}
+                                        </div>
+                                        {paint.name}
+                                    </div>
+                                    )
+                                    
+                                }})}
+                        </div>
+                    </div>
     
+                    <div id="exact-matches">
+                        <div className="container flex">
+                            {allExactMatches.map((paint, index) => {
+                                if (paint.manufacturer.toLowerCase() != manufacturer) {
+                                    return (
+                                        <div onClick={handlePaintClick} className="card" key={index}>
+                                            {paint.manufacturer} No. {paint.paintNum}
+                                            <div className="circle">
+                                                {Circle(paint.hexValue)}
+                                            </div>
+                                            {paint.name}
+                                        </div>
+                                    )
+                                }})}
+                        </div>
+                    </div>
+
+                    <h2>Closest Matches</h2>
+                        <div className="closest-matches">
+                            <div className="container flex">
+                                <h3>No close matches found</h3>
+                            </div>
+                        </div>
+                </section>
+            </>
+        )
+    } else {
+        return (
+            <>
+            <h3>No Matches Found!</h3>
             </>
         )
     }
 
+    
 }
 
 export default ConverterResults;

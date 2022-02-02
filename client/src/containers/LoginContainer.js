@@ -6,7 +6,7 @@ import '../css/LoginContainer.css'
 const LOGIN_URL = '/login';
 
 
-function LoginContainer() {
+function LoginContainer({setOpenModal}) {
 
     // const { setAuth } = useAuth();
     // const [username, setUsername] = useState("");
@@ -86,9 +86,12 @@ function LoginContainer() {
                             <button className="register-button" type="submit" >Submit</button>
                         </div>
                         <div className="login-modal-footer">
-                                <p className="register-heading">Don't have an acocunt?</p>
-                                <button className="register-button" type="">Register here</button>
-                            </div>
+                            <p className="register-heading">Don't have an acocunt?</p>
+                            <button className="register-button" type="">Register here</button>
+                        </div>
+                        <div>
+                            <button type="submit" onClick={() => {setOpenModal(false);}}>Close</button>
+                        </div>
                     </form>
                 </div>
             </div>

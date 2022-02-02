@@ -3,9 +3,9 @@ import HomePageContainer from './HomePageContainer';
 import SearchResults from "../components/SearchResults";
 import {getPaints} from '../services/PaintzService';
 import Search from "../components/Search";
+import '../css/PaintSearchContainer.css';
 
 function PaintSearchContainer() {
-
 
     const [paints, setPaints] = useState([]);
     const [filteredPaints, setFilteredPaints] = useState([]);
@@ -104,12 +104,12 @@ function PaintSearchContainer() {
     }
 
     return (
-        <div>
-            <h2>Paint Search</h2>
+        <div className="paint-search">
+            <h1 className="paint-search-heading">Paint Search</h1>
             <Search handleChange={filter} handleSearchTerm={handleSearchTerm} searchTerm={searchTerm}/>
             <div>
                 {filteredPaints.length > 0 ? 
-                    <select defaultValue="" onChange={handleBrandFilter} >
+                    <select className="search-input" defaultValue="" onChange={handleBrandFilter} >
                     <option value="default">Choose a Brand</option>
                     <option value="HUMBROL">Humbrol</option>
                     <option value="REVELL">Revell</option>
@@ -120,6 +120,7 @@ function PaintSearchContainer() {
                 }
             </div>
             <div>
+
                 {filteredPaints.length > 0 ? 
                     <select defaultValue="" onChange={handleColourFilter} >
                     <option value="default">Choose a Colour</option>
@@ -151,9 +152,8 @@ function PaintSearchContainer() {
                 }
             </div>
             <div>
-                {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>"Please begin typing to search"</p>}
-            </div>
-            
+                {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>begin typing to search...</p>}
+            </div>  
         </div>
     )
 }

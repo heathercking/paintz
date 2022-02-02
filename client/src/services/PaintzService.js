@@ -22,24 +22,49 @@ export const getExactMatches = (number, manufacturer) => {
     let queryURL = baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer
     console.log(queryURL)
     return(
-        fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
+    fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
+    .then(res => {
+        console.log(res.status);
+        if (res.status !== 200) {
+            console.log("ERROR!");
+            return res.status;
+        } else {
+            return res.json();
+        }
+    
+        })
+    )
+    
+    //return(
+        //fetch(baseURL + "paints/converter" + "?number=" + number + "&manufacturer=" + manufacturer)
         // {
         //     'Accept': 'application/json',
         //     'Content-Type': 'application/json',
         //     'Access-Control-Allow-Origin': '*',
-        // }    
-        .then(res => res.json())
-    )
+        // }   
+        //.then(res => console.log(res.status)) 
+        //.then(res => res.json())
+   //  )
 }
 
 export const getClosestMatches = (number, manufacturer) => {
     return(
         fetch(baseURL + "paints/converter/equivalents" + "?number=" + number + "&manufacturer=" + manufacturer)
+    .then(res => {
+        console.log(res.status);
+        if (res.status !== 200) {
+            console.log("Error!!");
+            return res.status;
+        } else {
+            return res.json();
+        }
+    })
         // {
         //     'Accept': 'application/json',
         //     'Content-Type': 'application/json',
         //     'Access-Control-Allow-Origin': '*',
         // }
-        .then(res => res.json())
+        // .then(res => console.log(res.status)) 
+        // .then(res => res.json())
     )
 }

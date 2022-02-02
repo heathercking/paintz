@@ -1,0 +1,23 @@
+.dataResult {
+    margin-top: 5px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 10px;
+}
+
+.searched-section .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
