@@ -159,7 +159,25 @@ function PaintSearchContainer() {
                 }
             </div>
             <div>
-                {filteredPaints.length > 0 ? <button onClick={handleSearchReset} type="submit">Reset</button> : ""}
+                {
+                    (filteredPaints.length == 0 && chosenBrand != "default" && chosenColour != "default" && chosenPaintType != "default")
+                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    : (filteredPaints.length == 0 && chosenBrand != "default" && chosenColour != "default")
+                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    : (filteredPaints.length == 0 && chosenBrand != "default" && chosenPaintType != "default")
+                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    : (filteredPaints.length == 0 && chosenColour != "default" && chosenPaintType != "default")
+                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    : (filteredPaints.length > 0)
+                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    : ""
+                }
+
+
+
+
+
+                {/* {filteredPaints.length >= 0 ? <button onClick={handleSearchReset} type="submit">Reset</button> : ""} */}
             </div>
             <div>
                 {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>begin typing to search...</p>}
