@@ -4,6 +4,7 @@ import '../css/Header.css'
 import headerLogo from "../assets/PaintzLogo_1300x500.png"
 import LoginContainer from "../containers/LoginContainer"
 
+
 function Header() {
 
     const [openLoginModal, setOpenLoginModal] = useState(false);
@@ -34,7 +35,9 @@ function Header() {
                 {/* <h1 className="logo"><a >Logo</a></h1> */}
                 <nav>
                     <ul>
-                        <li><a onClick={() => {setOpenLoginModal(true)}} >Login</a></li>
+                        <li><a onClick={() => {setOpenLoginModal(true)}} >
+                            Login <i class="far fa-user"></i>
+                        </a></li>
                         {openLoginModal && <LoginContainer setOpenModal={setOpenLoginModal}/>}
                     </ul>
                 </nav>
