@@ -53,7 +53,6 @@ function LoginContainer({setOpenModal}) {
         <div className="login-modal">
             <div className="login-modal-content">
                 <div className="login-modal-header">
-
                     <form onSubmit={handleSubmit}>
                         <h1 className="login-modal-title">Sign in to your account</h1>
                         
@@ -90,7 +89,8 @@ function LoginContainer({setOpenModal}) {
                             <button className="register-button" type="">Register here</button>
                         </div>
                         <div>
-                            <button type="submit" onClick={() => {setOpenModal(false);}}>Close</button>
+                            <i ype="submit" onClick={() => {setOpenModal(false);}} class="fas fa-times"></i>
+                            {/* <button type="submit" onClick={() => {setOpenModal(false);}}>Close</button> */}
                         </div>
                     </form>
                 </div>

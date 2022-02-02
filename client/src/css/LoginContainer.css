@@ -71,3 +71,9 @@
   cursor: pointer;
   transform: scale(1.15);
   }
+
+.exit-cross {
+  position: absolute;
+  left: 78%;
+  top: 17%;
+}
