@@ -97,7 +97,7 @@ function PaintConverterContainer() {
                                     />
                                     
                                 <select className="search-input-brand" onChange={handleManuChange} name="manufacturer" id="manufacturer">
-                                    <option className="placeholder" value="default">Choose a brand</option>
+                                    <option className="placeholder" value="default">choose a brand</option>
                                     <option value="humbrol">Humbrol</option>
                                     <option value="revell">Revell</option>
                                     <option value="tamiya">Tamiya</option>

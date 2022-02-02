@@ -6,8 +6,7 @@ function Footer() {
     return (
         <div className="footer">
           <div className="footer-wrapper">
-            {/* <img className ="footer-logo" alt="Logo" /> */}
-            <p id="footer-text">Copyright&copy; Team 2022</p>
+            <p id="footer-text">Copyright&copy; TheColourModels! 2022</p>
           </div>
         </div>
     )
