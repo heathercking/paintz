@@ -116,68 +116,54 @@ function PaintSearchContainer() {
             <Search handleChange={filter} handleSearchTerm={handleSearchTerm} searchTerm={searchTerm}/>
             <div>
                 {filteredPaints.length > 0 ? 
-                    <select className="search-input" defaultValue="" onChange={handleBrandFilter} >
-                    <option value="default">Choose a Brand</option>
-                    <option value="HUMBROL">Humbrol</option>
-                    <option value="REVELL">Revell</option>
-                    <option value="TAMIYA">Tamiya</option>
-                    </select>
-                    :
-                    ""
-                }
-            </div>
-            <div>
+                    <div className="filter-buttons">
+                        <h3 className="filters-heading">filters...</h3>
 
-                {filteredPaints.length > 0 ? 
-                    <select defaultValue="" onChange={handleColourFilter} >
-                    <option value="default">Choose a Colour</option>
-                    <option value="RED">Red</option>
-                    <option value="VIOLET">Violet</option>
-                    <option value="GREEN">Green</option>
-                    <option value="BLUE">Blue</option>
-                    <option value="YELLOW">Yellow</option>
-                    <option value="ORANGE">Orange</option>
-                    <option value="BLACK">Black</option>
-                    <option value="WHITE">White</option>
-                    <option value="GREY">Grey</option>
-                    <option value="NEUTRAL">Neutral</option>
-                    </select>
-                    :
-                    ""
-                }
-            </div>
-            <div>
-                {filteredPaints.length > 0 ? 
-                    <select defaultValue="" onChange={handlePaintTypeFilter} >
-                    <option value="default">Choose a Paint Type</option>
-                    <option value="ENAMEL">Enamel</option>
-                    <option value="ACRYLIC">Acrylic</option>
-                    <option value="SPRAY_ACRYLIC">Spray Acrylic</option>
-                    </select>
-                    :
-                    ""
+                            <select className="filter" defaultValue="" onChange={handleBrandFilter} >
+                            <option value="default">brand</option>
+                            <option value="HUMBROL">Humbrol</option>
+                            <option value="REVELL">Revell</option>
+                            <option value="TAMIYA">Tamiya</option>
+                            </select>
+
+                            <select className="filter" defaultValue="" onChange={handleColourFilter} >
+                            <option value="default">colour</option>
+                            <option value="RED">Red</option>
+                            <option value="VIOLET">Violet</option>
+                            <option value="GREEN">Green</option>
+                            <option value="BLUE">Blue</option>
+                            <option value="YELLOW">Yellow</option>
+                            <option value="ORANGE">Orange</option>
+                            <option value="BLACK">Black</option>
+                            <option value="WHITE">White</option>
+                            <option value="GREY">Grey</option>
+                            <option value="NEUTRAL">Neutral</option>
+                            </select>
+
+                            <select className="filter" defaultValue="" onChange={handlePaintTypeFilter} >
+                            <option value="default">type</option>
+                            <option value="ENAMEL">Enamel</option>
+                            <option value="ACRYLIC">Acrylic</option>
+                            <option value="SPRAY_ACRYLIC">Spray Acrylic</option>
+                            </select>
+                    </div>
+                : ""
                 }
             </div>
             <div>
                 {
                     (filteredPaints.length == 0 && chosenBrand != "default" && chosenColour != "default" && chosenPaintType != "default")
-                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    ? <button className="reset-button" onClick={handleSearchReset} type="submit">Reset</button> 
                     : (filteredPaints.length == 0 && chosenBrand != "default" && chosenColour != "default")
-                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    ? <button className="reset-button" onClick={handleSearchReset} type="submit">Reset</button> 
                     : (filteredPaints.length == 0 && chosenBrand != "default" && chosenPaintType != "default")
-                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    ? <button className="reset-button" onClick={handleSearchReset} type="submit">Reset</button> 
                     : (filteredPaints.length == 0 && chosenColour != "default" && chosenPaintType != "default")
-                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    ? <button className="reset-button" onClick={handleSearchReset} type="submit">Reset</button> 
                     : (filteredPaints.length > 0)
-                    ? <button onClick={handleSearchReset} type="submit">Reset</button> 
+                    ? <button className="reset-button" onClick={handleSearchReset} type="submit">Reset</button> 
                     : ""
                 }
-
-
-
-
-
-                {/* {filteredPaints.length >= 0 ? <button onClick={handleSearchReset} type="submit">Reset</button> : ""} */}
             </div>
             <div>
                 {filteredPaints.length > 0 ? <SearchResults paints={filteredPaints}/> : <p>begin typing to search...</p>}
