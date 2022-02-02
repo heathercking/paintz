@@ -21,11 +21,13 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
         paintSelector(event.target.value);
       }
 
-    const setModal = () => {
-        setOpenPaintDetailModal(true);
+    const toggleModal = () => {
+        setOpenPaintDetailModal(!openPaintDetailModal);
     }
 
 
+    // took this from an example class online
+    // nicked the relevant bit to put in here as a method, and set colour to a variable
     const Circle = (colour) => {
 
         var circleStyle = {
@@ -64,8 +66,8 @@ const ConverterResults = ( {allPaints, paintSelector, manufacturer, allExactMatc
                                     console.log(paint.manufacturer)
                                     console.log(paint.manufacturer.toLowerCase())
                                     return (
-                                        <div onClick={() => {setOpenPaintDetailModal(true);}}  value={paint} className="card" key={index}>
-                                            {openPaintDetailModal && <PaintDetail setOpenModal={setOpenPaintDetailModal} chosenPaint={paint} />}
+                                        <div onClick={toggleModal} value={paint} className="card" key={index}>
+                                            {openPaintDetailModal && <PaintDetail closeModal={toggleModal} chosenPaint={paint} />}
                                             {paint.manufacturer} No. {paint.paintNum}
                                         <div className="circle" >
                                             {Circle(paint.hexValue)}

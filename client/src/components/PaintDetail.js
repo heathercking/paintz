@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/PaintDetail.css'
 
 
-const PaintDetail = ( {chosenPaint, setOpenModal}) => {
+const PaintDetail = ( {chosenPaint, closeModal}) => {
 
     if (!chosenPaint) {
         return null
@@ -29,7 +29,7 @@ const PaintDetail = ( {chosenPaint, setOpenModal}) => {
                             <p>Size: {chosenPaint.size}</p>
                         </div>
                         <div className="paint-modal-footer">
-                            <button type="submit" onClick={() => {setOpenModal(false);}}>Close</button>
+                            <button type="submit" onClick={closeModal}  >Close</button>
                         </div>
                     </div>
                 </div>

@@ -48,7 +48,6 @@ function PaintConverterContainer() {
         // .then(response => setExactMatchesResponse(response.status))
         .then(data => {setExactMatches(data)})
         // .then(data => console.log(data))
-        // .then(data => {setExactMatches(data)})
     }
 
     const getCloseMatches = () => {
