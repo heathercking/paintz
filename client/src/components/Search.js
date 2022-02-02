@@ -1,30 +1,23 @@
-import React, {useState, useEffect, Component}  from 'react';
-import SearchResults from './SearchResults';
+import React, {useEffect} from 'react';
 import '../css/Search.css';
 
 
 function Search ({handleChange, handleSearchTerm, searchTerm})  {
 
-    
-
-  
     useEffect(() => {
       handleChange(searchTerm);
     }, [searchTerm]);
-
 
     const changeSearchTerm = (event) => {
         event.preventDefault();
         handleSearchTerm(event.target.value);
       }
-
-
- 
   
     const handleSubmit = (event) => {
       event.preventDefault();
     }
 
+    
     return (
         <>
         <form onSubmit={handleSubmit}>
@@ -33,16 +26,11 @@ function Search ({handleChange, handleSearchTerm, searchTerm})  {
             type="text"
             name="searchTerm"
             placeholder="search paints.."
-            value={searchTerm} />
-        </form>
-
-        
+            value={searchTerm} 
+            autoComplete="off" />
+        </form>   
         </>
-
     );
-
-
-
 }
 
 
