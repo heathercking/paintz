@@ -2,17 +2,32 @@
 
 This is Paintz! The model paint app; a relational database holding information on model paints, for key UK brands (currently Humbrol, Revell & Tamiya).
 
-![paintz](screenshots/homepage.png)
+![Paintz!](screenshots/Paintz1.png)
+![Paintz!](screenshots/Paintz2.png)
+
+
+## Tech Stack
+- Java
+- Spring
+- PostgreSQL
+- React
+- JavaScript
+- npm libraries
+
 
 ## Running Instructions
 
 ### Server
-- Run 'PaintzServerApplication'
+- open all server files
+- run 'PaintzServerApplication' (main method)
+- runs on port localhost:8080
 
 ### Client
 In Terminal run:
 - `npm install`
 - `npm start`
+- runs on port localhost:3000
+
 
 ## Product Roadmap
 
