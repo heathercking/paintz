@@ -1,0 +1,42 @@
+.paint-converter {
+    min-height: 70vh;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.paint-converter-heading {
+    margin: 20px 0px 5px 0px;
+}
+
+.paint-converter-subheading {
+    margin: 5px 0px;
+}
+
+.search-input-num {
+    width: 120px;
+    padding: 8px;
+    margin: 10px 5px;
+    border: 0.5px lightgrey solid;
+    border-radius: 5px;
+    color: grey;
+}
+
+.search-input-brand {
+    width: 130px;
+    padding: 7px;
+    margin: 10px 5px;
+    border: 0.5px lightgrey solid;
+    border-radius: 5px;
+    color: grey;
+}
+
+.convert-button {
+    padding: 10px 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-weight: 800;
+  }

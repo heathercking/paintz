@@ -1,11 +1,22 @@
 # Paintz!
 
-This is Paintz! The model paint app. 
+This is Paintz! The model paint app; a relational database holding information on model paints, for key UK brands (currently Humbrol, Revell & Tamiya).
 
+![paintz](screenshots/homepage.png)
 
-## MVP 
+## Running Instructions
 
-Create a relational database holding information on model paints, for key UK brands (start with the top 3). It should consist of:
+### Server
+- Run 'PaintzServerApplication'
+
+### Client
+In Terminal run:
+- `npm install`
+- `npm start`
+
+## Product Roadmap
+
+### Completed Functionality
 
 1. Intelligent search functionality:
     - be able to search by:
@@ -14,22 +25,21 @@ Create a relational database holding information on model paints, for key UK bra
         - Paint name - full or partial
     - bringing up results for:
         - Exact matches - and the exact equivalents across all brands
-        - Closest/alternative matches
-        - Mixes - possible mixes of colours to make a match?	
-2. User accounts
-3. User inventory - user can save paints/stock level to their own personal inventory (only available to logged-in users)
-4. An easy-to-navigate GUI - simple layout and styling in a mobile-first design (but responsive for PCs), using React Styled Components.
+        - Closest/alternative matches	
+2. An easy-to-navigate GUI - simple layout and styling in a mobile-first design (but responsive for PCs), using React Styled Components.
 
-## Extensions
+Part of the original plan was to include User Accounts and the ability for users to save paints to their own personal inventory. In order to achieve this, Spring Security was configured in the server; however, due to the specific way in which Spring Security handles CORS, the frontend is currently unable to connect to the backend. All of the work around Spring Security is currently sitting in the feature/spring_security branch.
 
-1. Local suppliers - basic list, or developed into a search functionality displaying results by distance
-2. Model selector - brings up all paints required and cross-references against user inventory
-3. Shopping list - which could be ‘transferred’ to linked local supplier website/shopping basket
+### Future Developments
+
+1. User accounts - to be setup once Spring Security issues have been resolved
+2. User inventory - user can save paints/stock level to their own personal inventory (only available to logged-in users)
+3. Local suppliers - basic list, or developed into a search functionality displaying results by distance
+4. Model selector - brings up all paints required and cross-references against user inventory
+5. Shopping list - which could be ‘transferred’ to linked local supplier website/shopping basket
 Administrator accounts - for amending database, and basic GUI
-
-## Advanced Extensions
-1. Barcode scanner - scan model barcodes to then bring up required paints (when using on mobile)
-2. API endpoints to connect to local supplier websites
+6. Barcode scanner - scan model barcodes to then bring up required paints (when using on mobile)
+7. API endpoints to connect to local supplier websites
 
 
 
