@@ -140,7 +140,7 @@ public class Paint {
         return results;
     }
 
-    // found this solution on Stackoverflow (for javascript) - trying to refine the difference just by the overall hex value was difficult, this helped pin it down
+    // found this solution on Stackoverflow (for javascript)
     public List<Paint> findClosestMatches(List<Paint> allPaints) {
         List<Paint> results = new ArrayList<Paint>();
         float red1 = (Integer.parseInt(this.hexValue.substring(0, 2), 16));
@@ -166,16 +166,5 @@ public class Paint {
     }
 
 }
-
-// originally had this in the above function, but working out a suitable cut-off point was challenging!
-//        int decimalOfThisHex = Integer.parseInt(this.hexValue, 16);
-//
-//        for (Paint paint : allPaints) {
-//            int decimalOfCurrentPaint = Integer.parseInt(paint.getHexValue(), 16);
-//
-//            if (Math.abs(decimalOfCurrentPaint - decimalOfThisHex) < 10000) {
-//                results.add(paint);
-//            }
-//        }
 
 
